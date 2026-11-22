@@ -5,6 +5,7 @@ This is the Missionmate governance app, moved out of Base44.
 - **Frontend:** React + Vite (the same screens as before) → hosted on **Vercel**
 - **Database, login, files, live updates:** **Supabase** (Postgres, Auth, Storage, Realtime)
 - **Server logic:** the 44 Base44 backend functions now run as **Supabase Edge Functions**
+  (folder names like `delete-meeting`; the app still calls `invoke('deleteMeeting')` and the name is converted)
 - **Scheduled jobs:** Supabase **pg_cron** (same times as Base44)
 - **Sign-in:** email + password, Google, and **Microsoft Entra ID (Azure AD)**
 
@@ -32,7 +33,7 @@ and [docs/DATABASE.md](docs/DATABASE.md) for the list of tables.
 │   │   ├── …0400_storage.sql     file buckets
 │   │   ├── …0500_realtime.sql    live updates
 │   │   └── …0600_automations.sql scheduled jobs + record triggers
-│   ├── functions/                Edge Functions (one folder each)
+│   ├── functions/                Edge Functions (one folder each, lowercase-with-hyphens names)
 │   │   └── _shared/              shared code: base44.ts (server shim), b44/entities.js (data adapter), llm.ts, email.ts
 │   └── config.toml               Supabase CLI settings
 ├── schema/entities/*.jsonc       The original Base44 entity definitions (source of truth for tables)

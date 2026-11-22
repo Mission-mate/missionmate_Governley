@@ -801,6 +801,7 @@ function createHandler(ctx, name, meta) {
 /**
  * entities.<EntityName> -> handler. Unknown names throw a clear error instead of failing later.
  * hooks.deleteRow(name, id): optional override for deletes (used for User -> delete the auth user).
+ * @returns {Record<string, any>}
  */
 export function createEntities({ supabase, schema, hooks = {} }) {
   const cache = new Map();

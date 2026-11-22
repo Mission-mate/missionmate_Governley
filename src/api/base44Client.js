@@ -58,11 +58,10 @@ async function invoke(name, payload = {}) {
     // invoke('deleteMeeting') -> /functions/v1/delete-meeting
     res = await fetch(`${SUPABASE_URL}/functions/v1/${functionSlug(name)}`, { method: 'POST', headers, body });
   } catch (networkError) {
-    const err = new Error(`Network error calling ${name}: ${networkError.message}`);
-    err.response = undefined;
-    throw err;
+    throw Object.assign(new Error(`Network error calling ${name}: ${networkError.message}`), { response: undefined });
   }
   const text = await res.text();
+  /** @type {any} */
   let data = text;
   try {
     data = text ? JSON.parse(text) : null;
@@ -70,11 +69,11 @@ async function invoke(name, payload = {}) {
     /* plain text response */
   }
   if (!res.ok) {
-    const err = new Error(`Request failed with status code ${res.status}`);
-    err.status = res.status;
-    err.data = data;
-    err.response = { status: res.status, data, headers: res.headers };
-    throw err;
+    throw Object.assign(new Error(`Request failed with status code ${res.status}`), {
+      status: res.status,
+      data,
+      response: { status: res.status, data, headers: res.headers },
+    });
   }
   return { data, status: res.status, headers: res.headers };
 }

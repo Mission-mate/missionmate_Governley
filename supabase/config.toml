@@ -32,141 +32,143 @@ redirect_uri = ""
 
 # Edge functions check the caller themselves (signed-in user, or the scheduled-job secret),
 # so the gateway JWT check is turned off. This also lets them work with the new API keys.
+# Function names are lowercase with hyphens: Supabase lowercases names, so camelCase folders fail to deploy.
+# The app still calls them by their Base44 names (invoke('deleteMeeting')); functionSlug.js converts.
 
-[functions.adminUsers]
+[functions.admin-users]
 verify_jwt = false
 
-[functions.calendarStatus]
+[functions.calendar-status]
 verify_jwt = false
 
-[functions.cleanupDeletedPlanReferences]
+[functions.cleanup-deleted-plan-references]
 verify_jwt = false
 
-[functions.cleanupUndatedMeetings]
+[functions.cleanup-undated-meetings]
 verify_jwt = false
 
 [functions.conversations]
 verify_jwt = false
 
-[functions.createMeetingCalendarEvent]
+[functions.create-meeting-calendar-event]
 verify_jwt = false
 
-[functions.createRisk]
+[functions.create-risk]
 verify_jwt = false
 
-[functions.deleteAttendanceRecord]
+[functions.delete-attendance-record]
 verify_jwt = false
 
-[functions.deleteCoiPerson]
+[functions.delete-coi-person]
 verify_jwt = false
 
-[functions.deleteComplianceCalendars]
+[functions.delete-compliance-calendars]
 verify_jwt = false
 
-[functions.deleteConflict]
+[functions.delete-conflict]
 verify_jwt = false
 
-[functions.deleteDocumentFolder]
+[functions.delete-document-folder]
 verify_jwt = false
 
-[functions.deleteMeeting]
+[functions.delete-meeting]
 verify_jwt = false
 
-[functions.deleteObligations]
+[functions.delete-obligations]
 verify_jwt = false
 
-[functions.deletePrograms]
+[functions.delete-programs]
 verify_jwt = false
 
-[functions.deleteProjects]
+[functions.delete-projects]
 verify_jwt = false
 
-[functions.deleteRegisterRecords]
+[functions.delete-register-records]
 verify_jwt = false
 
-[functions.deleteRegisters]
+[functions.delete-registers]
 verify_jwt = false
 
-[functions.deleteStrategy]
+[functions.delete-strategy]
 verify_jwt = false
 
-[functions.deleteStrategyBlocks]
+[functions.delete-strategy-blocks]
 verify_jwt = false
 
-[functions.ensureMembershipDefaults]
+[functions.ensure-membership-defaults]
 verify_jwt = false
 
-[functions.generateOverdueRiskReport]
+[functions.generate-overdue-risk-report]
 verify_jwt = false
 
-[functions.generateOverdueTreatmentReport]
+[functions.generate-overdue-treatment-report]
 verify_jwt = false
 
-[functions.generateRiskReport]
+[functions.generate-risk-report]
 verify_jwt = false
 
-[functions.generateStrategyStatusReport]
+[functions.generate-strategy-status-report]
 verify_jwt = false
 
-[functions.generateSubmissionPDF]
+[functions.generate-submission-pdf]
 verify_jwt = false
 
-[functions.getMembershipForm]
+[functions.get-membership-form]
 verify_jwt = false
 
-[functions.invokeLLM]
+[functions.invoke-llm]
 verify_jwt = false
 
-[functions.migrateTagsToIds]
+[functions.migrate-tags-to-ids]
 verify_jwt = false
 
-[functions.policyVersions]
+[functions.policy-versions]
 verify_jwt = false
 
-[functions.processBulkContactUpdate]
+[functions.process-bulk-contact-update]
 verify_jwt = false
 
-[functions.processMembershipExpiry]
+[functions.process-membership-expiry]
 verify_jwt = false
 
-[functions.reconcileBoardMatrixOrphans]
+[functions.reconcile-board-matrix-orphans]
 verify_jwt = false
 
-[functions.reconcileMemberPlanNames]
+[functions.reconcile-member-plan-names]
 verify_jwt = false
 
-[functions.saveLevel6Block]
+[functions.save-level6-block]
 verify_jwt = false
 
-[functions.saveProgram]
+[functions.save-program]
 verify_jwt = false
 
-[functions.saveRisk]
+[functions.save-risk]
 verify_jwt = false
 
-[functions.seedSampleData]
+[functions.seed-sample-data]
 verify_jwt = false
 
-[functions.setupPlanner]
+[functions.setup-planner]
 verify_jwt = false
 
-[functions.storageResolveUrl]
+[functions.storage-resolve-url]
 verify_jwt = false
 
-[functions.submitMembershipForm]
+[functions.submit-membership-form]
 verify_jwt = false
 
-[functions.syncGrantLookups]
+[functions.sync-grant-lookups]
 verify_jwt = false
 
-[functions.syncMemberPlanNames]
+[functions.sync-member-plan-names]
 verify_jwt = false
 
-[functions.syncParticipantIdentity]
+[functions.sync-participant-identity]
 verify_jwt = false
 
-[functions.syncProgramTitles]
+[functions.sync-program-titles]
 verify_jwt = false
 
-[functions.syncTagReferences]
+[functions.sync-tag-references]
 verify_jwt = false

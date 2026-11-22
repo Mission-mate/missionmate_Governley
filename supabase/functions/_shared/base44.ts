@@ -15,6 +15,7 @@
 import { createClient, type SupabaseClient } from 'npm:@supabase/supabase-js@2';
 import { createEntities, Base44Error, normalizeRecord, fromPgError } from './b44/entities.js';
 import { SCHEMA } from './b44/schema.generated.js';
+import { functionSlug } from './b44/functionSlug.js';
 import { invokeLLM } from './llm.ts';
 import { sendEmail } from './email.ts';
 
@@ -212,7 +213,7 @@ export function createClientFromRequest(req: Request): any {
         const caller = await ready;
         if (caller.kind === 'user') headers.Authorization = `Bearer ${caller.token}`;
         if (caller.kind === 'cron') headers['x-cron-secret'] = env('CRON_SECRET');
-        const res = await fetch(`${SUPABASE_URL}/functions/v1/${name}`, { method: 'POST', headers, body: JSON.stringify(payload) });
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/${functionSlug(name)}`, { method: 'POST', headers, body: JSON.stringify(payload) });
         const text = await res.text();
         let data: unknown = text;
         try { data = text ? JSON.parse(text) : null; } catch { /* text */ }
