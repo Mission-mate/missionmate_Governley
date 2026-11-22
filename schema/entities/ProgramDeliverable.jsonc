@@ -1,0 +1,233 @@
+{
+  "name": "ProgramDeliverable",
+  "type": "object",
+  "properties": {
+    "program_id": {
+      "type": "string",
+      "description": "Owning Program ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "On Hold",
+        "Cancelled"
+      ]
+    },
+    "health": {
+      "type": "string",
+      "enum": [
+        "On Track",
+        "At Risk",
+        "Off Track"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "description": "High, Medium or Low; empty when unset"
+    },
+    "track_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Track Progress toggle; absent is treated as enabled"
+    },
+    "track_method": {
+      "type": "string",
+      "enum": [
+        "completion",
+        "count",
+        "both"
+      ],
+      "default": "completion",
+      "description": "Tasks & Milestones, Measures, or Both"
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "#",
+        "%",
+        "$"
+      ],
+      "default": "#"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "Higher is Better",
+        "Lower is Better"
+      ],
+      "default": "Higher is Better"
+    },
+    "progress": {
+      "type": "number",
+      "description": "0-100, calculated from completed tasks and milestones"
+    },
+    "task_columns": {
+      "type": "object",
+      "description": "Tasks & Milestones table column configuration for this deliverable",
+      "properties": {
+        "optional_visible": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optional_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optional_labels": {
+          "type": "object"
+        },
+        "optional_options": {
+          "type": "object"
+        },
+        "system_hidden": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "custom": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "config": {
+                "type": "object"
+              },
+              "visible": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "location_reporting_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Measures: category based reporting enabled"
+    },
+    "reporting_breakdown": {
+      "type": "string",
+      "description": "Measures layout when categories are enabled: 'period' or 'location'"
+    },
+    "reporting_locations": {
+      "type": "array",
+      "description": "Managed reporting categories for this deliverable's Measures table",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "report_columns": {
+      "type": "object",
+      "description": "Measures table column configuration",
+      "properties": {
+        "optional_visible": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optional_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optional_labels": {
+          "type": "object"
+        },
+        "system_labels": {
+          "type": "object"
+        },
+        "system_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "system_hidden": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "custom": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "config": {
+                "type": "object"
+              },
+              "visible": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values keyed by Program.deliverable_config custom column id"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "program_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Level5Subtask",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "Owning Level5Task record ID"
+    },
+    "block_id": {
+      "type": "string",
+      "description": "Parent StrategyBlock ID (denormalised for cascades and counts)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Checklist item title"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed"
+      ],
+      "default": "Not Started"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string",
+      "description": "Rich-text (HTML) description"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "task_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

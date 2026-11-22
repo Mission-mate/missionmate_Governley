@@ -1,0 +1,72 @@
+{
+  "name": "Contact",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company or organization name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "member",
+        "volunteer",
+        "donor",
+        "board_member",
+        "stakeholder",
+        "partner",
+        "other"
+      ],
+      "default": "other"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active"
+    },
+    "address": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Custom field values keyed by field ID"
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

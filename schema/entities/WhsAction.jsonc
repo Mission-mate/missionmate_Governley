@@ -1,0 +1,84 @@
+{
+  "name": "WhsAction",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string"
+    },
+    "action_code": {
+      "type": "string",
+      "description": "e.g. ACT-001"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "hazard",
+        "incident",
+        "safety_check"
+      ],
+      "description": "Exactly one source; set on creation"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "ID of the source WhsHazard / WhsIncident / WhsSafetyCheck"
+    },
+    "source_code": {
+      "type": "string",
+      "description": "Cached source human ID, e.g. HZ-001"
+    },
+    "title": {
+      "type": "string",
+      "description": "Action title"
+    },
+    "action_required": {
+      "type": "string",
+      "description": "Action description"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Closed"
+      ],
+      "default": "Open",
+      "description": "Lifecycle status"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "On Hold"
+      ],
+      "default": "Not Started",
+      "description": "Workflow stage, independent of status"
+    },
+    "date_completed": {
+      "type": "string",
+      "format": "date"
+    },
+    "verified_by": {
+      "type": "string"
+    },
+    "additional_details": {
+      "type": "string",
+      "description": "Rich-text (HTML) additional details"
+    }
+  },
+  "required": [
+    "register_id",
+    "source_type",
+    "source_id",
+    "title",
+    "status",
+    "stage"
+  ]
+}

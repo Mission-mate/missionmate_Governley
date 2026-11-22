@@ -1,0 +1,55 @@
+{
+  "name": "ComplianceRegister",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Compliance calendar / register title, e.g. 2028-2029 Compliance Register"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the compliance register"
+    },
+    "compliance_period_type": {
+      "type": "string",
+      "enum": [
+        "Financial Year",
+        "Calendar Year"
+      ],
+      "default": "Financial Year",
+      "description": "Which yearly cycle this calendar covers \u2014 Financial Year (1 July \u2013 30 June) or Calendar Year (1 Jan \u2013 31 Dec)"
+    },
+    "financial_year_start": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the compliance period this calendar covers (1 July for FY, 1 Jan for calendar year)"
+    },
+    "financial_year_end": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the compliance period this calendar covers (30 June for FY, 31 Dec for calendar year)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Register lifecycle status \u2014 controls which tab (Active/Archived) it appears under"
+    },
+    "config": {
+      "type": "object",
+      "description": "Register-level configuration: field definitions, column order, etc."
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

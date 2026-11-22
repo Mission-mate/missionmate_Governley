@@ -1,0 +1,61 @@
+{
+  "name": "StrategyBlockReport",
+  "type": "object",
+  "properties": {
+    "block_id": {
+      "type": "string",
+      "description": "Parent Level 6 StrategyBlock ID this reporting row belongs to"
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "Parent reporting period row ID \u2014 set on location child rows only. Empty for reporting period (parent/standalone) rows."
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Location ID from the block's reporting_locations \u2014 set on location child rows only"
+    },
+    "period_label": {
+      "type": "string",
+      "description": "Reporting period display label, e.g. Q1 2026, January 2026, 14 Jul 2026 \u2014 auto-generated from the block's reporting settings, user-overridable"
+    },
+    "period_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Anchor date of the reporting period, used for ordering"
+    },
+    "expected": {
+      "type": "number",
+      "description": "Expected (budget/target) value for this period"
+    },
+    "actual": {
+      "type": "number",
+      "description": "Actual value recorded for this period"
+    },
+    "total_expected": {
+      "type": "number",
+      "description": "Total expected value (e.g. annual target/budget) used for Progress % calculation"
+    },
+    "baseline": {
+      "type": "number",
+      "description": "Fixed point of reference for benchmarking"
+    },
+    "custom_values": {
+      "type": "object",
+      "description": "Map of custom column id \u2192 value for this row"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Generation index / sort order within the block's reporting table"
+    }
+  },
+  "required": [
+    "block_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

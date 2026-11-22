@@ -1,0 +1,54 @@
+{
+  "name": "ObligationTask",
+  "type": "object",
+  "properties": {
+    "parent_type": {
+      "type": "string",
+      "enum": [
+        "compliance_obligation",
+        "work_plan_item",
+        "meeting_action",
+        "decision"
+      ],
+      "description": "Kind of record this checklist item belongs to"
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "ID of the owning record"
+    },
+    "title": {
+      "type": "string",
+      "description": "Item title"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed"
+      ],
+      "default": "Not Started"
+    },
+    "owner_name": {
+      "type": "string",
+      "description": "Free-text name of the owner"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order within the checklist"
+    }
+  },
+  "required": [
+    "parent_type",
+    "parent_id",
+    "title"
+  ]
+}

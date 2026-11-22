@@ -1,0 +1,102 @@
+{
+  "name": "Complaint",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (Complaints Register)"
+    },
+    "complaint_code": {
+      "type": "string",
+      "description": "Complaint ID, e.g. CMP-001 (unique within the register)"
+    },
+    "complaint_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "complainant_name": {
+      "type": "string",
+      "description": "The person making the complaint"
+    },
+    "complainant_email": {
+      "type": "string"
+    },
+    "complainant_phone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Closed"
+      ],
+      "default": "Open"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ]
+    },
+    "taken_by": {
+      "type": "string",
+      "description": "Person who took the complaint"
+    },
+    "channel": {
+      "type": "string",
+      "description": "From register config.channels"
+    },
+    "details": {
+      "type": "string",
+      "description": "Complaint description"
+    },
+    "root_cause": {
+      "type": "string",
+      "description": "Root cause analysis"
+    },
+    "corrective_action": {
+      "type": "string",
+      "enum": [
+        "Required",
+        "Not Required"
+      ],
+      "default": "Required"
+    },
+    "action_status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "On Hold"
+      ],
+      "default": "Not Started"
+    },
+    "corrective_action_details": {
+      "type": "string",
+      "description": "Corrective action details"
+    },
+    "date_resolved": {
+      "type": "string",
+      "format": "date"
+    },
+    "resolved_by": {
+      "type": "string",
+      "description": "Complaint handler who resolved the complaint"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for config.custom_columns keyed by column id"
+    }
+  },
+  "required": [
+    "register_id",
+    "complaint_code",
+    "complaint_date",
+    "complainant_name",
+    "status",
+    "details"
+  ]
+}

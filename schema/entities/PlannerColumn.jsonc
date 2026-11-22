@@ -1,0 +1,63 @@
+{
+  "name": "PlannerColumn",
+  "type": "object",
+  "properties": {
+    "planner_id": {
+      "type": "string",
+      "description": "Owning planner ID"
+    },
+    "system_key": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "due_date",
+        "status",
+        "priority"
+      ],
+      "description": "Set on locked system columns; empty for custom columns"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Single Select",
+        "Multi Select",
+        "Date",
+        "People",
+        "Text/Number",
+        "Progress"
+      ]
+    },
+    "config": {
+      "type": "object",
+      "description": "Type-specific config; select types hold options",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "planner_id",
+    "title",
+    "type"
+  ]
+}

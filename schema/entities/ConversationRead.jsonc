@@ -1,0 +1,45 @@
+{
+  "name": "ConversationRead",
+  "type": "object",
+  "properties": {
+    "conversation_id": {
+      "type": "string",
+      "description": "Conversation ID this read progress belongs to"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "User ID of the member; one record per member per conversation"
+    },
+    "read_at": {
+      "type": "string",
+      "description": "ISO timestamp of the latest message the member has seen; set by the conversations function"
+    }
+  },
+  "required": [
+    "conversation_id",
+    "user_id",
+    "read_at"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    }
+  }
+}

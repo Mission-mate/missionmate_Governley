@@ -1,0 +1,62 @@
+{
+  "name": "AppConfig",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Config key, e.g. 'custom_fields'. The 'modules' record (enabled modules and their order) can only be written by admins."
+    },
+    "settings": {
+      "type": "object",
+      "description": "Global app configuration object"
+    }
+  },
+  "required": [
+    "key"
+  ],
+  "rls": {
+    "read": null,
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.key": {
+            "$ne": "modules"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.key": {
+            "$ne": "modules"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "data.key": {
+            "$ne": "modules"
+          }
+        }
+      ]
+    }
+  }
+}

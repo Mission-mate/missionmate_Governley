@@ -1,0 +1,118 @@
+{
+  "name": "ConflictOfInterest",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Compliance Conflict of Interest Register ID. Empty for Board People conflicts."
+    },
+    "conflict_id": {
+      "type": "string",
+      "description": "Human-readable conflict ID, e.g. COI-001 \u2014 auto-populated, editable, unique"
+    },
+    "member_user_id": {
+      "type": "string",
+      "description": "Board: optional linked BoardPerson user_id. Compliance: linked CoiPerson ID."
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Person's display name \u2014 point-in-time snapshot"
+    },
+    "title": {
+      "type": "string",
+      "description": "Declaration title (Compliance register)"
+    },
+    "date_of_disclosure": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of declaration"
+    },
+    "description": {
+      "type": "string",
+      "description": "Nature of interest"
+    },
+    "committee_notified": {
+      "type": "string",
+      "enum": [
+        "Yes",
+        "No",
+        "Not Required"
+      ],
+      "description": "Whether the committee was notified. Board: Yes/No. Compliance: Yes/Not Required."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Archived"
+      ],
+      "default": "Active",
+      "description": "Conflict lifecycle status"
+    },
+    "conflict_type": {
+      "type": "string",
+      "description": "Conflict type: Perceived, Potential or Actual (empty when unset)"
+    },
+    "review_frequency": {
+      "type": "string",
+      "description": "Review frequency preset (Monthly, Quarterly, Biannually, Annually, Every, Ad Hoc)"
+    },
+    "interval_value": {
+      "type": "number",
+      "description": "Custom review interval value, used only when review_frequency is 'Every'"
+    },
+    "interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ],
+      "description": "Custom review interval unit, used only when review_frequency is 'Every'"
+    },
+    "last_review_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the conflict was last reviewed"
+    },
+    "next_review_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the conflict is next due for review"
+    },
+    "risk_exposure": {
+      "type": "string",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ],
+      "description": "Risk exposure level"
+    },
+    "approved_by": {
+      "type": "string",
+      "description": "Free-text name of the person who approved"
+    },
+    "approved_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the declaration was approved"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "JSON map of custom field id \u2192 value for configured fields"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "description"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

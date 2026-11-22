@@ -1,0 +1,27 @@
+{
+  "name": "GrantProvider",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Provider / funder name, e.g. Arts NT"
+    },
+    "website": {
+      "type": "string",
+      "description": "Optional provider website URL"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes about the provider"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

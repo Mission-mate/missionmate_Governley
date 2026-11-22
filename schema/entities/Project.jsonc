@@ -1,0 +1,93 @@
+{
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "program_id": {
+      "type": "string",
+      "description": "Parent program ID"
+    },
+    "program_title": {
+      "type": "string",
+      "description": "Cached parent program title"
+    },
+    "title": {
+      "type": "string",
+      "description": "Project title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description"
+    },
+    "project_manager": {
+      "type": "string",
+      "description": "Name of the project manager"
+    },
+    "project_officer": {
+      "type": "string",
+      "description": "Name of the project officer"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Selectable statuses are active/completed; archived is set only via the Archive action"
+    },
+    "color": {
+      "type": "string",
+      "default": "blue",
+      "description": "Card colour key (same options as Program cards)"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "deliverable_config": {
+      "type": "object",
+      "description": "Deliverables Customiser config for this project (independent of the parent program)",
+      "properties": {
+        "show_priority": {
+          "type": "boolean",
+          "default": true
+        },
+        "custom_columns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "config": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "title",
+    "program_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

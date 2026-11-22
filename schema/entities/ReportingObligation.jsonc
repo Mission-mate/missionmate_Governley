@@ -1,0 +1,56 @@
+{
+  "name": "ReportingObligation",
+  "type": "object",
+  "properties": {
+    "grant_id": {
+      "type": "string",
+      "description": "Grant this obligation belongs to"
+    },
+    "title": {
+      "type": "string",
+      "description": "Reporting obligation title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional obligation description"
+    },
+    "reporting_type": {
+      "type": "string",
+      "description": "e.g. Report, Acquittal, Milestone"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "complete"
+      ],
+      "default": "not_started",
+      "description": "Lifecycle status. Overdue is a computed display flag (past due date and not complete), never a stored value. Visibility on the Reporting Obligations page is controlled by the parent Grant's status."
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "responsible_person": {
+      "type": "string",
+      "description": "Free-text name of the person responsible. Deliberately not linked to a User record \u2014 no ID companion and no cascade from User.full_name."
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "grant_id",
+    "title",
+    "reporting_type",
+    "status",
+    "due_date"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

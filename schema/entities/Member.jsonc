@@ -1,0 +1,135 @@
+{
+  "name": "Member",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "Member first name"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Member last name (optional)"
+    },
+    "email": {
+      "type": "string",
+      "description": "Member email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Member contact number"
+    },
+    "organisation": {
+      "type": "string",
+      "description": "Member organisation or company name"
+    },
+    "street_address": {
+      "type": "string",
+      "description": "Member street address"
+    },
+    "suburb": {
+      "type": "string",
+      "description": "Member suburb"
+    },
+    "state": {
+      "type": "string",
+      "description": "Member state"
+    },
+    "postal_code": {
+      "type": "string",
+      "description": "Member postal code"
+    },
+    "membership_structure_id": {
+      "type": "string",
+      "description": "Linked MembershipStructure ID"
+    },
+    "membership_structure_name": {
+      "type": "string",
+      "description": "Cached membership structure name for display"
+    },
+    "membership_tier_id": {
+      "type": "string",
+      "description": "Selected tier id within the membership structure (when the plan has tiers)"
+    },
+    "membership_tier_name": {
+      "type": "string",
+      "description": "Cached selected tier name for display"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "Cash",
+        "Bank Transfer",
+        "Online Payment",
+        "Invoice"
+      ],
+      "description": "Payment method the member selected on the application form (editable by admins)"
+    },
+    "online_payment_type": {
+      "type": "string",
+      "enum": [
+        "one_time",
+        "recurrent"
+      ],
+      "description": "When payment_method is Online Payment: whether the member paid via a one-time payment or a recurrent (auto-rebilling) subscription"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "Paid",
+        "Pending",
+        "Overdue"
+      ],
+      "description": "Payment status, manually verified and set by admins. 'Pending' means payment is expected but not yet received \u2014 entirely separate from the membership 'status' field's lowercase 'pending' (which is an approval state)."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "pending",
+        "expired",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Membership status. Set manually by admins, and automatically flipped to 'expired' by the nightly expiry sweep once the plan's expiration date plus grace period has passed and the plan's 'After Grace Period' is 'Mark as expired'. 'archived' hides the member from the active tabs but retains the record until permanently deleted."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tag names applied to this member"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Membership start date"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Membership expiration date (empty for lifetime)"
+    },
+    "last_renewal_reminder_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the last pre-expiry renewal reminder email was sent. Used by the nightly expiry sweep to send at most one reminder per expiry cycle."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form notes about the member"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Custom field values keyed by field ID"
+    }
+  },
+  "required": [
+    "first_name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

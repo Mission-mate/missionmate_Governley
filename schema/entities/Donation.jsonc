@@ -1,0 +1,82 @@
+{
+  "name": "Donation",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (Donor Register)"
+    },
+    "donor_id": {
+      "type": "string",
+      "description": "Linked Donor record ID"
+    },
+    "donation_code": {
+      "type": "string",
+      "description": "Manually entered donation ID, e.g. DON-0001"
+    },
+    "donation_type": {
+      "type": "string",
+      "description": "From register config.donation_types"
+    },
+    "description": {
+      "type": "string"
+    },
+    "gross_amount": {
+      "type": "number"
+    },
+    "date_received": {
+      "type": "string",
+      "format": "date"
+    },
+    "financial_year": {
+      "type": "string",
+      "description": "Auto-calculated from date_received (1 Jul - 30 Jun), e.g. FY2026-27"
+    },
+    "payment_method": {
+      "type": "string",
+      "description": "From register config.payment_methods"
+    },
+    "inkind_category": {
+      "type": "string"
+    },
+    "inkind_quantity": {
+      "type": "number"
+    },
+    "inkind_condition": {
+      "type": "string",
+      "enum": [
+        "Good",
+        "Fair",
+        "Poor"
+      ]
+    },
+    "inkind_fair_value": {
+      "type": "number"
+    },
+    "inkind_valuation_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "inkind_custodian": {
+      "type": "string"
+    },
+    "inkind_disposal_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "inkind_disposal_method": {
+      "type": "string"
+    },
+    "inkind_sale_proceeds": {
+      "type": "number"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for config.donation_custom_columns keyed by column id"
+    }
+  },
+  "required": [
+    "register_id",
+    "donor_id"
+  ]
+}

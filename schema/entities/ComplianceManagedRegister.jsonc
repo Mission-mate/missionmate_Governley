@@ -1,0 +1,75 @@
+{
+  "name": "ComplianceManagedRegister",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Register title, e.g. WHS Register"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category name this register is filed under (from the compliance register category list)"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person responsible for maintaining the register"
+    },
+    "review_frequency": {
+      "type": "string",
+      "description": "Review cadence: Monthly, Quarterly, Biannually, Annually, Every, or Ad Hoc"
+    },
+    "interval_value": {
+      "type": "number",
+      "description": "Custom review interval value, used only when review_frequency is 'Every'"
+    },
+    "interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ],
+      "description": "Custom review interval unit, used only when review_frequency is 'Every'"
+    },
+    "last_review_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the register was last reviewed \u2014 defaults to today at creation, used as the base for the next review date"
+    },
+    "next_review_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the register is next due for review \u2014 auto-calculated from frequency and last review date (manual for Ad Hoc)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Register lifecycle status"
+    },
+    "register_type": {
+      "type": "string",
+      "description": "How the register is set up (populated by the Type step of the add flow)"
+    },
+    "config": {
+      "type": "object",
+      "description": "Register-level configuration reserved for the register type / builder"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order within its category"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

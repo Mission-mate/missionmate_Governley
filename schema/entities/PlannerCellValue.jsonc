@@ -1,0 +1,32 @@
+{
+  "name": "PlannerCellValue",
+  "type": "object",
+  "properties": {
+    "planner_id": {
+      "type": "string",
+      "description": "Owning planner ID"
+    },
+    "row_id": {
+      "type": "string"
+    },
+    "column_id": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string",
+      "description": "Scalar value (select, date, text, progress)"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List value (Multi Select, People)"
+    }
+  },
+  "required": [
+    "planner_id",
+    "row_id",
+    "column_id"
+  ]
+}

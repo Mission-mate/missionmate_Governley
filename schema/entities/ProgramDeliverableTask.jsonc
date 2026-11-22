@@ -1,0 +1,112 @@
+{
+  "name": "ProgramDeliverableTask",
+  "type": "object",
+  "properties": {
+    "deliverable_id": {
+      "type": "string",
+      "description": "Parent ProgramDeliverable ID this task belongs to"
+    },
+    "section_id": {
+      "type": "string",
+      "description": "ID of the section record this task/milestone is grouped under. Empty = ungrouped."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "task",
+        "milestone",
+        "section"
+      ],
+      "default": "task",
+      "description": "Task (may have subtasks), milestone, or section (grouping header)"
+    },
+    "custom_id": {
+      "type": "string",
+      "description": "Human-readable, user-editable record ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-completes when all its subtasks are completed"
+    },
+    "description": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "health": {
+      "type": "string",
+      "description": "On Track, Monitor, or Off Track (options editable per deliverable)"
+    },
+    "status": {
+      "type": "string",
+      "description": "Not Started, In Progress, Completed, On Hold, or Cancelled (options editable per deliverable)"
+    },
+    "priority": {
+      "type": "string",
+      "description": "High, Medium, or Low (options editable per deliverable)"
+    },
+    "effectiveness": {
+      "type": "string",
+      "description": "Optional column, hidden by default"
+    },
+    "progress": {
+      "type": "number",
+      "default": 0
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          },
+          "added_at": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "custom_values": {
+      "type": "object",
+      "description": "Map of custom column id to value"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order within its group"
+    }
+  },
+  "required": [
+    "deliverable_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "ProjectDeliverableReport",
+  "type": "object",
+  "properties": {
+    "deliverable_id": {
+      "type": "string",
+      "description": "Parent ProjectDeliverable ID this reporting row belongs to"
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "Parent reporting period row ID; set on category child rows only"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Category ID from the deliverable's reporting_locations"
+    },
+    "period_label": {
+      "type": "string"
+    },
+    "period_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expected": {
+      "type": "number"
+    },
+    "actual": {
+      "type": "number"
+    },
+    "total_expected": {
+      "type": "number"
+    },
+    "baseline": {
+      "type": "number"
+    },
+    "custom_values": {
+      "type": "object"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "deliverable_id"
+  ]
+}

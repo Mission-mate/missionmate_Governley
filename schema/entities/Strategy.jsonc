@@ -1,0 +1,121 @@
+{
+  "name": "Strategy",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The name of the strategy (e.g. 5 Year Strategic Plan 2025-30)"
+    },
+    "start_year": {
+      "type": "number",
+      "description": "First year of the strategy period (e.g. 2025)"
+    },
+    "end_year": {
+      "type": "number",
+      "description": "Last year of the strategy period (e.g. 2030)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Legacy strategy summary. Superseded by vision/mission/values."
+    },
+    "vision": {
+      "type": "string",
+      "description": "The strategy's vision statement"
+    },
+    "mission": {
+      "type": "string",
+      "description": "The strategy's mission statement (optional)"
+    },
+    "values": {
+      "type": "array",
+      "description": "Organisational values shown as coloured labels",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string",
+            "description": "Colour key: blue, green, orange, red, or purple"
+          }
+        }
+      }
+    },
+    "guiding_principles": {
+      "type": "array",
+      "description": "Optional guiding principles for the strategy, shown as muted pills",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "owner": {
+      "type": "string",
+      "description": "Department, Division, or person responsible (e.g. CEO, Department of International Trade)"
+    },
+    "color": {
+      "type": "string",
+      "description": "Card colour key (same options as Program cards)"
+    },
+    "level_field_config": {
+      "type": "object",
+      "description": "Per-layer table field configuration from the Strategy Customiser, keyed 'level{slot}' where slot is the layer's numeric storage slot. Each entry holds { priority_visible: boolean, custom: [{ id, title, type, config }] }. Priority is a locked system field (options never editable) and is absent on the Priorities layer."
+    },
+    "strategy_layers": {
+      "type": "array",
+      "description": "Ordered hierarchy layers for this strategy. Array order is the hierarchy order. Vision and Strategic Theme are always the first two layers and cannot be reordered.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Stable layer key the code references: vision, theme, priorities, actions, initiatives, measures, enablers, custom"
+          },
+          "level": {
+            "type": "number",
+            "description": "Numeric storage slot used by StrategyBlock.level for this layer. An identifier only; it does not imply hierarchy order."
+          },
+          "name": {
+            "type": "string",
+            "description": "User-facing name of the layer (renamable except for Vision)"
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the layer appears in the strategy workspace"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Active",
+        "Archived"
+      ],
+      "default": "Active",
+      "description": "Strategy lifecycle status"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "WorkPlanTemplateFolder",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Work plan library folder name, e.g. Governance & Policy"
+    },
+    "color": {
+      "type": "string",
+      "default": "orange",
+      "description": "Folder colour key (orange, yellow, green, teal, lavender)"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order in the work plan library"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "AssetMaintenanceEntry",
+  "type": "object",
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "description": "Parent AssetRegisterItem record ID"
+    },
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (denormalised)"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the maintenance was carried out"
+    },
+    "type": {
+      "type": "string",
+      "description": "Maintenance type: Preventive, Corrective, Inspection, Repair or Other"
+    },
+    "title": {
+      "type": "string",
+      "description": "Maintenance title"
+    },
+    "description": {
+      "type": "string",
+      "description": "What maintenance was done"
+    },
+    "provider": {
+      "type": "string",
+      "description": "Who carried out the maintenance"
+    },
+    "cost": {
+      "type": "number",
+      "description": "Maintenance cost"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "asset_id",
+    "date"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

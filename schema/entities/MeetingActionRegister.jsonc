@@ -1,0 +1,49 @@
+{
+  "name": "MeetingActionRegister",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Register title"
+    },
+    "description": {
+      "type": "string"
+    },
+    "object_type": {
+      "type": "string",
+      "description": "Owning module, e.g. board"
+    },
+    "object_id": {
+      "type": "string",
+      "description": "ID of owning record"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "default": "active"
+    },
+    "is_locked": {
+      "type": "boolean",
+      "default": true,
+      "description": "When true, column structure is read-only"
+    },
+    "config": {
+      "type": "object",
+      "description": "Register-level configuration: field definitions, column order, etc."
+    }
+  },
+  "required": [
+    "title",
+    "object_type",
+    "object_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

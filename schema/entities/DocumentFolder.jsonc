@@ -1,0 +1,32 @@
+{
+  "name": "DocumentFolder",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "e.g. contact, grant"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string",
+      "description": "Folder colour key",
+      "default": "orange"
+    }
+  },
+  "required": [
+    "object_type",
+    "object_id",
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

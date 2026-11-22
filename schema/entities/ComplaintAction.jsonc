@@ -1,0 +1,36 @@
+{
+  "name": "ComplaintAction",
+  "type": "object",
+  "properties": {
+    "complaint_id": {
+      "type": "string",
+      "description": "Parent Complaint ID"
+    },
+    "register_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Closed"
+      ],
+      "default": "Open"
+    }
+  },
+  "required": [
+    "complaint_id",
+    "title",
+    "status"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "NotePage",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "Module scope key of the owning record, e.g. compliance_obligation"
+    },
+    "object_id": {
+      "type": "string",
+      "description": "ID of the owning record these note pages belong to"
+    },
+    "title": {
+      "type": "string",
+      "description": "Note page title"
+    },
+    "content": {
+      "type": "string",
+      "description": "Rich-text page content stored as HTML"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Plain-text excerpt derived from content, used for nav previews"
+    },
+    "owner_name": {
+      "type": "string",
+      "description": "Free-text name of the page owner"
+    },
+    "page_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the note page (ISO yyyy-MM-dd), defaults to the creation date"
+    },
+    "color": {
+      "type": "string",
+      "description": "Note icon colour key from the folder palette: orange, yellow, green, teal or lavender"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order of the page within its parent record"
+    }
+  },
+  "required": [
+    "object_type",
+    "object_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

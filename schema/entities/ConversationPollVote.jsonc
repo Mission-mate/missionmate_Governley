@@ -1,0 +1,53 @@
+{
+  "name": "ConversationPollVote",
+  "type": "object",
+  "properties": {
+    "message_id": {
+      "type": "string",
+      "description": "ConversationMessage ID of the poll this vote belongs to"
+    },
+    "conversation_id": {
+      "type": "string",
+      "description": "Owning Conversation ID (denormalised for cascades)"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "User ID of the voter; each member has one vote record per poll"
+    },
+    "option_ids": {
+      "type": "array",
+      "description": "IDs of the poll options this member chose",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "message_id",
+    "conversation_id",
+    "user_id",
+    "option_ids"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    }
+  }
+}

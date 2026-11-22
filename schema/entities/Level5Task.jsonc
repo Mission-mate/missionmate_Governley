@@ -1,0 +1,123 @@
+{
+  "name": "Level5Task",
+  "type": "object",
+  "properties": {
+    "block_id": {
+      "type": "string",
+      "description": "Parent Level 5 StrategyBlock ID this task belongs to"
+    },
+    "section_id": {
+      "type": "string",
+      "description": "ID of the section record this task/milestone is grouped under. Empty = ungrouped."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "task",
+        "milestone",
+        "section"
+      ],
+      "default": "task",
+      "description": "Whether this record is a task (may have Level5Subtask records), a milestone, or a section (grouping header, title only)"
+    },
+    "custom_id": {
+      "type": "string",
+      "description": "Human-readable, user-editable record ID, e.g. TSK-001 or MIL-001"
+    },
+    "title": {
+      "type": "string",
+      "description": "Task / section name"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the task is completed. Auto-completes when all its Level5Subtask records are completed."
+    },
+    "description": {
+      "type": "string",
+      "description": "Task description \u2014 what the task is about"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Task start date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Task due date"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person responsible for this task"
+    },
+    "health": {
+      "type": "string",
+      "description": "Health: On Track, Monitor, or Off Track (options editable per block)"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status: Not Started, In Progress, Completed, On Hold, or Cancelled (options editable per block)"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority: High, Medium, or Low (options editable per block)"
+    },
+    "effectiveness": {
+      "type": "string",
+      "description": "Effectiveness: Effective, Partially Effective, Ineffective, or Not Assessed (optional column, hidden by default)"
+    },
+    "progress": {
+      "type": "number",
+      "default": 0,
+      "description": "Progress percentage 0-100 for this task / milestone"
+    },
+    "progress_notes": {
+      "type": "string",
+      "description": "Legacy single progress-notes field. Superseded by note pages."
+    },
+    "documents": {
+      "type": "array",
+      "description": "Documents attached to this task",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "author_name": {
+            "type": "string"
+          },
+          "added_at": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "custom_values": {
+      "type": "object",
+      "description": "Map of custom column id \u2192 value for this task"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order within its group (section or root list)"
+    }
+  },
+  "required": [
+    "block_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

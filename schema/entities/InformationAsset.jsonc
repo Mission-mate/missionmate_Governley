@@ -1,0 +1,136 @@
+{
+  "name": "InformationAsset",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (Information Asset Register)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Information asset name"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-line description"
+    },
+    "record_type": {
+      "type": "string",
+      "enum": [
+        "Digital",
+        "Hardcopy",
+        "Hybrid"
+      ],
+      "description": "Record type"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Superseded"
+      ],
+      "default": "Active"
+    },
+    "location": {
+      "type": "string",
+      "description": "Where the information is held, e.g. SharePoint"
+    },
+    "personal_information": {
+      "type": "string",
+      "enum": [
+        "Yes",
+        "No"
+      ],
+      "description": "Contains personal information"
+    },
+    "national_security": {
+      "type": "string",
+      "enum": [
+        "Yes",
+        "No"
+      ],
+      "description": "Contains national security information"
+    },
+    "business_function": {
+      "type": "string",
+      "description": "Business function, e.g. HR, Finance"
+    },
+    "information_owner": {
+      "type": "string",
+      "description": "Information owner, e.g. HR Team"
+    },
+    "retention_requirement": {
+      "type": "string",
+      "description": "How long the information is kept, e.g. 7 years"
+    },
+    "security_classification": {
+      "type": "string",
+      "enum": [
+        "Public",
+        "Internal",
+        "Confidential"
+      ],
+      "description": "Security classification"
+    },
+    "confidentiality_impact": {
+      "type": "string",
+      "enum": [
+        "No Impact",
+        "Minor",
+        "Limited",
+        "Major",
+        "Catastrophic"
+      ],
+      "description": "Business impact level - confidentiality"
+    },
+    "integrity_impact": {
+      "type": "string",
+      "enum": [
+        "No Impact",
+        "Minor",
+        "Limited",
+        "Major",
+        "Catastrophic"
+      ],
+      "description": "Business impact level - integrity"
+    },
+    "availability_impact": {
+      "type": "string",
+      "enum": [
+        "No Impact",
+        "Minor",
+        "Limited",
+        "Major",
+        "Catastrophic"
+      ],
+      "description": "Business impact level - availability"
+    },
+    "risk_exposure": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "description": "Risk exposure"
+    },
+    "risk_details": {
+      "type": "string",
+      "description": "Free-text risk details"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for the register's custom columns (config.custom_columns), keyed by custom column id"
+    }
+  },
+  "required": [
+    "register_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

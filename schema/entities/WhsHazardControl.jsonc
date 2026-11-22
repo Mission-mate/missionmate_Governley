@@ -1,0 +1,38 @@
+{
+  "name": "WhsHazardControl",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string"
+    },
+    "hazard_id": {
+      "type": "string",
+      "description": "Parent WhsHazard ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Closed"
+      ],
+      "default": "Open"
+    },
+    "additional_details": {
+      "type": "string",
+      "description": "Rich-text (HTML) additional details"
+    }
+  },
+  "required": [
+    "hazard_id",
+    "title"
+  ]
+}

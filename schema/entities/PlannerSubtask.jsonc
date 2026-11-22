@@ -1,0 +1,47 @@
+{
+  "name": "PlannerSubtask",
+  "type": "object",
+  "properties": {
+    "parent_type": {
+      "type": "string",
+      "enum": [
+        "planner_row"
+      ]
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "Owning PlannerRow ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed"
+      ],
+      "default": "Not Started"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "parent_type",
+    "parent_id",
+    "title"
+  ]
+}

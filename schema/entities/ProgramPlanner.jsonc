@@ -1,0 +1,56 @@
+{
+  "name": "ProgramPlanner",
+  "type": "object",
+  "properties": {
+    "program_id": {
+      "type": "string",
+      "description": "Owning Program ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Planner owner name"
+    },
+    "date_created": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "archived"
+      ],
+      "default": "active",
+      "description": "archived is set only via the Archive action"
+    },
+    "color": {
+      "type": "string",
+      "default": "blue",
+      "description": "Card colour key"
+    },
+    "setup_key": {
+      "type": "string",
+      "description": "Client-generated key for the create request; lets a retried create resume the same planner. Set by the setupPlanner function."
+    },
+    "setup_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "ready"
+      ],
+      "description": "pending until the starter grid is confirmed by the setupPlanner function; pending planners are hidden and repaired automatically."
+    }
+  },
+  "required": [
+    "program_id",
+    "title",
+    "owner"
+  ]
+}

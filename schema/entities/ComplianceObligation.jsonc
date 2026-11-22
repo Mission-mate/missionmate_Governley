@@ -1,0 +1,91 @@
+{
+  "name": "ComplianceObligation",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceRegister ID"
+    },
+    "obligation_id": {
+      "type": "string",
+      "description": "Human-readable obligation ID, e.g. OBL-001"
+    },
+    "template_origin_id": {
+      "type": "string",
+      "description": "Stable identity of the template library item this obligation was applied from. Used to prevent adding the same template item to the same register twice."
+    },
+    "title": {
+      "type": "string",
+      "description": "Obligation title / name (required)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the compliance obligation"
+    },
+    "category": {
+      "type": "string",
+      "description": "Compliance category value from register config"
+    },
+    "regulator": {
+      "type": "string",
+      "description": "Regulatory body or authority responsible for this obligation"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person or role responsible for the obligation"
+    },
+    "frequency": {
+      "type": "string",
+      "description": "How often this obligation recurs (Monthly, Quarterly, Annually, Ad Hoc, One-off)"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Obligation due date"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority value from register config"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "On Hold",
+        "Cancelled"
+      ],
+      "default": "Not Started",
+      "description": "Obligation status"
+    },
+    "register_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Tab placement state \u2014 controls which capsule tab (Open/Closed/Archived) the obligation appears under"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "JSON map of custom column id \u2192 value"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "register_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

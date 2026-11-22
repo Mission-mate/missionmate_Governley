@@ -1,0 +1,61 @@
+{
+  "name": "ComplianceTemplateObligation",
+  "type": "object",
+  "properties": {
+    "folder_id": {
+      "type": "string",
+      "description": "Parent ComplianceTemplateFolder ID"
+    },
+    "template_origin_id": {
+      "type": "string",
+      "description": "Stable identity linking this template item back to its source obligation. Used to dedup when applying to a register and to update the library entry instead of creating a duplicate."
+    },
+    "title": {
+      "type": "string",
+      "description": "Obligation title / name (required)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the compliance obligation"
+    },
+    "category": {
+      "type": "string",
+      "description": "Compliance category value"
+    },
+    "regulator": {
+      "type": "string",
+      "description": "Regulatory body or authority responsible for this obligation"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person or role responsible for the obligation"
+    },
+    "frequency": {
+      "type": "string",
+      "description": "How often this obligation recurs"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority value"
+    },
+    "due_month_day": {
+      "type": "string",
+      "description": "Month-and-day of the due date, stored as MM-DD. The year is re-mapped to the target register's compliance period when the template is applied. Empty if no due date was set."
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order within the folder"
+    }
+  },
+  "required": [
+    "folder_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

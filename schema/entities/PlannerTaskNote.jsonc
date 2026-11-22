@@ -1,0 +1,44 @@
+{
+  "name": "PlannerTaskNote",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "Always planner_row"
+    },
+    "object_id": {
+      "type": "string",
+      "description": "Owning PlannerRow ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "description": "Rich-text HTML content"
+    },
+    "excerpt": {
+      "type": "string"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "page_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "color": {
+      "type": "string",
+      "description": "Note icon colour key from the folder palette: orange, yellow, green, teal or lavender"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "object_type",
+    "object_id",
+    "title"
+  ]
+}

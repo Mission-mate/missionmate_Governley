@@ -1,0 +1,28 @@
+{
+  "name": "MeetingActionRegisterLink",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Linked MeetingActionRegister ID"
+    },
+    "meeting_id": {
+      "type": "string",
+      "description": "Linked Meeting ID"
+    },
+    "register_title": {
+      "type": "string",
+      "description": "Cached register title for display"
+    }
+  },
+  "required": [
+    "register_id",
+    "meeting_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

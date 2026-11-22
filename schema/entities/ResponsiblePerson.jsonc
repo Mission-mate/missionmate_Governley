@@ -1,0 +1,112 @@
+{
+  "name": "ResponsiblePerson",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "director_id": {
+      "type": "string"
+    },
+    "person_type": {
+      "type": "string",
+      "enum": [
+        "Board Member",
+        "Non-Board Member"
+      ],
+      "default": "Board Member"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Current",
+        "Past"
+      ],
+      "default": "Current"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "appointment_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date commenced elected/appointed"
+    },
+    "appointment_term": {
+      "type": "string",
+      "enum": [
+        "Ongoing",
+        "Custom"
+      ],
+      "default": "Ongoing"
+    },
+    "interval_value": {
+      "type": "number"
+    },
+    "interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ]
+    },
+    "term_expiry_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "date_ceased": {
+      "type": "string",
+      "format": "date"
+    },
+    "offices": {
+      "type": "array",
+      "description": "Offices held by this person across committees",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "office_held": {
+            "type": "string"
+          },
+          "committee": {
+            "type": "string",
+            "description": "From register config.committees"
+          },
+          "date_commenced": {
+            "type": "string",
+            "format": "date"
+          },
+          "date_ceased": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for config.custom_columns keyed by column id"
+    }
+  },
+  "required": [
+    "register_id",
+    "full_name",
+    "status"
+  ]
+}

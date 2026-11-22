@@ -1,0 +1,94 @@
+{
+  "name": "GiftBenefit",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (Gift, Benefits and Hospitality Register)"
+    },
+    "record_code": {
+      "type": "string",
+      "description": "Record ID, e.g. GBH-001 (unique within the register)"
+    },
+    "date_received": {
+      "type": "string",
+      "format": "date"
+    },
+    "financial_year": {
+      "type": "string",
+      "description": "Derived from date_received (1 Jul - 30 Jun), e.g. FY2026-27"
+    },
+    "gift_type": {
+      "type": "string",
+      "enum": [
+        "Gift",
+        "Benefit"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of gift/benefit"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of gift or benefit"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Reason for gift/benefit"
+    },
+    "presented_by": {
+      "type": "string"
+    },
+    "relationship_nature": {
+      "type": "string",
+      "description": "Nature of relationship with the presenter"
+    },
+    "received_by": {
+      "type": "string"
+    },
+    "estimated_value": {
+      "type": "number",
+      "description": "Estimated market value"
+    },
+    "conflict_of_interest": {
+      "type": "string",
+      "enum": [
+        "Actual",
+        "Perceived",
+        "Potential",
+        "No Conflict of Interest"
+      ]
+    },
+    "conflict_details": {
+      "type": "string",
+      "description": "Only when a conflict is Actual, Perceived or Potential"
+    },
+    "declaration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "approval_decision": {
+      "type": "string",
+      "enum": [
+        "Approved",
+        "Approved with Conditions",
+        "Not Approved",
+        "Pending Decision",
+        "Not Required"
+      ]
+    },
+    "approved_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "register_id",
+    "record_code",
+    "date_received",
+    "gift_type",
+    "description",
+    "presented_by",
+    "conflict_of_interest"
+  ]
+}

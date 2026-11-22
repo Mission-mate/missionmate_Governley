@@ -1,0 +1,141 @@
+{
+  "name": "PolicyDocument",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "document_type": {
+      "type": "string",
+      "description": "From AppConfig policy_document_types"
+    },
+    "category": {
+      "type": "string",
+      "description": "From AppConfig policy_categories; inherited from parent when linked"
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "Parent Policy document ID (one level only)"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "approved_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the policy takes effect"
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "Public",
+        "Internal",
+        "Restricted"
+      ]
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Under Review",
+        "Approved",
+        "Withdrawn",
+        "Superseded"
+      ],
+      "default": "Draft"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "default": "active"
+    },
+    "review_with_parent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Linked document shares the parent's review schedule"
+    },
+    "review_frequency": {
+      "type": "string",
+      "enum": [
+        "Monthly",
+        "Quarterly",
+        "Biannually",
+        "Annually",
+        "Every",
+        "Ad Hoc"
+      ]
+    },
+    "interval_value": {
+      "type": "number"
+    },
+    "interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ]
+    },
+    "last_review_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_review_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "current_version_id": {
+      "type": "string",
+      "description": "The single Current PolicyVersion. Set only by the policyVersions function together with the primary file fields, in one write."
+    },
+    "primary_file_uri": {
+      "type": "string",
+      "description": "Private file URI of the Current version's document (PDF or Word)"
+    },
+    "primary_file_name": {
+      "type": "string",
+      "description": "Original filename of the Current version's document"
+    },
+    "primary_display_title": {
+      "type": "string",
+      "description": "Display title of the Current version's document"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for AppConfig policy custom_columns keyed by column id"
+    },
+    "content_sections": {
+      "type": "array",
+      "description": "Readable text of the primary file, extracted once for search and the assistant",
+      "items": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "title",
+    "document_type",
+    "category",
+    "status"
+  ]
+}

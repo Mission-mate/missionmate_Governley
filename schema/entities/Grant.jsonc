@@ -1,0 +1,94 @@
+{
+  "name": "Grant",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Grant name"
+    },
+    "reference_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "closed",
+        "archived"
+      ],
+      "default": "active"
+    },
+    "provider": {
+      "type": "string",
+      "description": "Cached display name of the linked GrantProvider"
+    },
+    "provider_id": {
+      "type": "string",
+      "description": "Linked GrantProvider ID"
+    },
+    "program": {
+      "type": "string",
+      "description": "Cached display name of the linked GrantActivity"
+    },
+    "activity_id": {
+      "type": "string",
+      "description": "Linked GrantActivity ID"
+    },
+    "internal_owner": {
+      "type": "string"
+    },
+    "internal_owner_role": {
+      "type": "string",
+      "description": "Role/title of the internal grant owner shown under their name in Key Contacts"
+    },
+    "program_linked": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string"
+    },
+    "provider_contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "total_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Cached summary of the awarded total. Always numeric \u2014 0 when no amount is recorded. Funding Breakdown (FinancialEntry 'funding') remains the authoritative source."
+    }
+  },
+  "required": [
+    "name",
+    "provider"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

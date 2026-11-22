@@ -1,0 +1,57 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "admin",
+        "user",
+        "guest"
+      ],
+      "default": "user",
+      "description": "App-level permission role"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "invited",
+        "suspended"
+      ],
+      "default": "invited"
+    },
+    "is_system_admin": {
+      "type": "boolean",
+      "default": false,
+      "description": "System Admin access for the MissionMate admin portal."
+    },
+    "last_login": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "access_control": {
+      "type": "string",
+      "enum": [
+        "full",
+        "restricted"
+      ],
+      "default": "full",
+      "description": "Access level. 'full' grants all module permissions; 'restricted' uses the per-module permissions map."
+    },
+    "permissions": {
+      "type": "object",
+      "description": "Map of permission key (module id or 'module.submodule') to boolean. Used when access_control is 'restricted'."
+    }
+  }
+}

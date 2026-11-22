@@ -1,0 +1,55 @@
+{
+  "name": "WorkPlan",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Work plan title, e.g. 2026-2027 Annual Board Work Plan"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the work plan"
+    },
+    "compliance_period_type": {
+      "type": "string",
+      "enum": [
+        "Financial Year",
+        "Calendar Year"
+      ],
+      "default": "Financial Year",
+      "description": "Which yearly cycle this work plan covers \u2014 Financial Year (1 July \u2013 30 June) or Calendar Year (1 Jan \u2013 31 Dec)"
+    },
+    "financial_year_start": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the reporting period this work plan covers (1 July for FY, 1 Jan for calendar year)"
+    },
+    "financial_year_end": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the reporting period this work plan covers (30 June for FY, 31 Dec for calendar year)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Work plan lifecycle status \u2014 controls which tab (Active/Archived) it appears under"
+    },
+    "config": {
+      "type": "object",
+      "description": "Work plan level configuration: field definitions, column order, etc."
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

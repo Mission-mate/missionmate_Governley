@@ -1,0 +1,43 @@
+{
+  "name": "Committee",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Committee name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Committee description"
+    },
+    "default_meeting_link": {
+      "type": "string",
+      "description": "Optional default online meeting link"
+    },
+    "default_timezone": {
+      "type": "string",
+      "description": "Default meeting time zone key (see TIMEZONES); pre-fills new meetings"
+    },
+    "default_location": {
+      "type": "string",
+      "description": "Default meeting location name; pre-fills new meetings"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

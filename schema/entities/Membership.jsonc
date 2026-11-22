@@ -1,0 +1,43 @@
+{
+  "name": "Membership",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "ID of the platform user"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "admin",
+        "user",
+        "guest"
+      ],
+      "default": "user",
+      "description": "owner=Full Access, admin=Administrative Access, user=Team Member, guest=Read Only"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "invited",
+        "suspended"
+      ],
+      "default": "invited"
+    },
+    "invited_email": {
+      "type": "string",
+      "description": "Email used for the invitation, before user registers"
+    }
+  },
+  "required": [
+    "user_id"
+  ],
+  "rls": {
+    "create": {},
+    "read": {},
+    "update": {},
+    "delete": {}
+  }
+}

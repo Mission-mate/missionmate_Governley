@@ -1,0 +1,129 @@
+{
+  "name": "ConversationMessage",
+  "type": "object",
+  "properties": {
+    "conversation_id": {
+      "type": "string",
+      "description": "Owning Conversation ID"
+    },
+    "sender_id": {
+      "type": "string",
+      "description": "User ID of the sender"
+    },
+    "text": {
+      "type": "string",
+      "description": "Message text"
+    },
+    "sent_at": {
+      "type": "string",
+      "description": "ISO timestamp set by the conversations function; messages are ordered by it"
+    },
+    "has_attachment": {
+      "type": "boolean",
+      "default": false,
+      "description": "True when the message carries a file; the conversation's Shared Files list is read by it"
+    },
+    "attachment_uri": {
+      "type": "string",
+      "description": "Private storage URI of the attached file; opened through a short-lived signed link"
+    },
+    "attachment_name": {
+      "type": "string"
+    },
+    "attachment_size": {
+      "type": "number"
+    },
+    "attachment_type": {
+      "type": "string",
+      "description": "MIME type of the attached file"
+    },
+    "pinned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Pinned to the conversation's pinned bar; set by the conversations function"
+    },
+    "pinned_at": {
+      "type": "string",
+      "description": "ISO timestamp of when the message was pinned; the pinned bar lists newest pins first"
+    },
+    "pinned_by": {
+      "type": "string",
+      "description": "User ID of the member who pinned the message"
+    },
+    "poll": {
+      "type": "object",
+      "description": "Set when this message is a poll. Votes are stored as ConversationPollVote records.",
+      "properties": {
+        "question": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "multiple": {
+          "type": "boolean",
+          "description": "Members may choose more than one option"
+        },
+        "allow_change": {
+          "type": "boolean",
+          "description": "Members may change their vote while the poll is open"
+        },
+        "results": {
+          "type": "string",
+          "enum": [
+            "always",
+            "after_vote",
+            "after_close"
+          ],
+          "description": "When vote totals and voter names are shown to members"
+        },
+        "closes_at": {
+          "type": "string",
+          "description": "Optional ISO deadline; the poll counts as closed from this moment"
+        },
+        "closed_at": {
+          "type": "string",
+          "description": "ISO timestamp set when the creator closes the poll"
+        }
+      }
+    }
+  },
+  "required": [
+    "conversation_id",
+    "sender_id",
+    "sent_at"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    }
+  }
+}

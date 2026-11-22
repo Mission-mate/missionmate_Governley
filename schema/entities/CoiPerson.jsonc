@@ -1,0 +1,56 @@
+{
+  "name": "CoiPerson",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (Conflict of Interest Register)"
+    },
+    "declarant_code": {
+      "type": "string",
+      "description": "Human-readable declarant ID, e.g. D-0001 \u2014 auto-generated, unique within the register"
+    },
+    "full_name": {
+      "type": "string",
+      "description": "Person name, unique within the register"
+    },
+    "role": {
+      "type": "string",
+      "description": "Person's role"
+    },
+    "person_type": {
+      "type": "string",
+      "description": "Person Type option name (register config person_types; seeded Director, Committee Member, Staff, Volunteer, Contractor)"
+    },
+    "division": {
+      "type": "string",
+      "description": "Business division"
+    },
+    "email": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Archived"
+      ],
+      "default": "Active",
+      "description": "Declarant lifecycle status"
+    },
+    "last_declaration_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the person's last declaration (manual input)"
+    },
+    "next_declaration_due": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the person's next declaration is due (manual input)"
+    }
+  },
+  "required": [
+    "register_id",
+    "full_name"
+  ]
+}

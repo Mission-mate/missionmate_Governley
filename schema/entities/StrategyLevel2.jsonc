@@ -1,0 +1,43 @@
+{
+  "name": "StrategyLevel2",
+  "type": "object",
+  "properties": {
+    "strategy_id": {
+      "type": "string",
+      "description": "Parent Strategy ID this Level 2 pillar belongs to"
+    },
+    "name": {
+      "type": "string",
+      "description": "Level 2 label name, e.g. People & Culture"
+    },
+    "color": {
+      "type": "string",
+      "enum": [
+        "blue",
+        "green",
+        "orange",
+        "red",
+        "purple",
+        "amber",
+        "rose"
+      ],
+      "default": "blue",
+      "description": "Tint colour key used for the Level 2 label badge. blue/green/orange/red/purple are the current palette; amber/rose retained for legacy records."
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order in the Manage Level 2 list"
+    }
+  },
+  "required": [
+    "strategy_id",
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

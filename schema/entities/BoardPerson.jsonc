@@ -1,0 +1,103 @@
+{
+  "name": "BoardPerson",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Linked application user ID"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "board_member",
+        "non_board_member"
+      ],
+      "default": "board_member",
+      "description": "Whether this person is a board member or non-board member within the Board Management Module"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Cached display name"
+    },
+    "member_email": {
+      "type": "string",
+      "description": "Cached email"
+    },
+    "contact_number": {
+      "type": "string",
+      "description": "Committee member contact number"
+    },
+    "position": {
+      "type": "string",
+      "description": "Position/title shown under the name \u2014 'Member' when the person holds no office"
+    },
+    "appointment_start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the member started in their office/position"
+    },
+    "appointment_end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Optional date the member ended in their office/position"
+    },
+    "director_id": {
+      "type": "string",
+      "description": "Director identification number"
+    },
+    "appointment_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the member commenced as a committee member"
+    },
+    "appointment_term": {
+      "type": "string",
+      "enum": [
+        "Ongoing",
+        "Custom"
+      ],
+      "default": "Ongoing",
+      "description": "Whether the appointment is ongoing or for a custom term"
+    },
+    "interval_value": {
+      "type": "number",
+      "description": "Custom appointment term value, used only when appointment_term is 'Custom'"
+    },
+    "interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ],
+      "description": "Custom appointment term unit, used only when appointment_term is 'Custom'"
+    },
+    "term_renewal_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Term renewal/expiry date \u2014 auto-calculated from appointment date and term"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active",
+      "description": "Committee member lifecycle status"
+    },
+    "additional_details": {
+      "type": "string",
+      "description": "Rich-text (HTML) additional details about the committee member"
+    }
+  },
+  "required": [
+    "user_id",
+    "type"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

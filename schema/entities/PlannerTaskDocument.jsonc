@@ -1,0 +1,42 @@
+{
+  "name": "PlannerTaskDocument",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "Always planner_row"
+    },
+    "object_id": {
+      "type": "string",
+      "description": "Owning PlannerRow ID"
+    },
+    "folder_id": {
+      "type": "string",
+      "description": "PlannerTaskDocumentFolder ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Private storage URI of the file; opened through a short-lived signed link"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "file_size": {
+      "type": "number"
+    },
+    "mime_type": {
+      "type": "string"
+    },
+    "created_by_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "object_type",
+    "object_id",
+    "title"
+  ]
+}

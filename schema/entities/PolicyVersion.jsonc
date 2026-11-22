@@ -1,0 +1,111 @@
+{
+  "name": "PolicyVersion",
+  "type": "object",
+  "properties": {
+    "policy_id": {
+      "type": "string",
+      "description": "Parent PolicyDocument ID"
+    },
+    "version_number": {
+      "type": "string",
+      "description": "e.g. 1.0, 2.1"
+    },
+    "display_title": {
+      "type": "string",
+      "description": "Document display title shown in the versions table and preview"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Summary of changes"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Current",
+        "Superseded"
+      ],
+      "enumColors": [
+        "green",
+        "red"
+      ],
+      "default": "Superseded",
+      "description": "Derived from PolicyDocument.current_version_id by the policyVersions function; only that version is Current"
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "approved_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "minute_reference": {
+      "type": "string"
+    },
+    "effective_from": {
+      "type": "string",
+      "format": "date"
+    },
+    "file_uri": {
+      "type": "string",
+      "description": "Private file URI of this version's document"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "content_sections": {
+      "type": "array",
+      "description": "Readable text of this version's file, extracted once for viewing",
+      "items": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "pending": {
+      "type": "boolean",
+      "default": false,
+      "description": "Upload candidate not yet committed; hidden from the versions list"
+    },
+    "request_key": {
+      "type": "string",
+      "description": "Client request key; a retried upload reuses the same candidate"
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "seed",
+        "upload"
+      ],
+      "enumColors": [
+        "gray",
+        "blue"
+      ],
+      "description": "seed = first version created from the policy's primary file"
+    }
+  },
+  "required": [
+    "policy_id",
+    "version_number",
+    "status"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "delete": null
+  }
+}

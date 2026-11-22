@@ -1,0 +1,26 @@
+{
+  "name": "PlannerTaskDocumentFolder",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "Always planner_row"
+    },
+    "object_id": {
+      "type": "string",
+      "description": "Owning PlannerRow ID"
+    },
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string",
+      "default": "orange"
+    }
+  },
+  "required": [
+    "object_type",
+    "object_id",
+    "name"
+  ]
+}

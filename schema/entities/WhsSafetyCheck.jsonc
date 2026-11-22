@@ -1,0 +1,74 @@
+{
+  "name": "WhsSafetyCheck",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string"
+    },
+    "check_code": {
+      "type": "string",
+      "description": "e.g. CHK-001"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "One-off",
+        "Monthly",
+        "Quarterly",
+        "Annually",
+        "Ad Hoc",
+        "Every"
+      ]
+    },
+    "interval_value": {
+      "type": "number",
+      "description": "Custom interval, used only when frequency is 'Every'"
+    },
+    "interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ],
+      "description": "Custom interval unit, used only when frequency is 'Every'"
+    },
+    "date_last_done": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_due": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Closed"
+      ],
+      "default": "Open"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for config.check_custom_columns keyed by column id"
+    }
+  },
+  "required": [
+    "register_id",
+    "title",
+    "check_code",
+    "status"
+  ]
+}

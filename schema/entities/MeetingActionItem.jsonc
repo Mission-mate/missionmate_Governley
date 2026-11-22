@@ -1,0 +1,85 @@
+{
+  "name": "MeetingActionItem",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent MeetingActionRegister ID"
+    },
+    "action_id": {
+      "type": "string",
+      "description": "Human-readable action ID, e.g. ACT-001"
+    },
+    "meeting_id": {
+      "type": "string",
+      "description": "Optional linked Meeting ID. The meeting's title, committee and date are always read from that Meeting record, never copied onto the action."
+    },
+    "minute_ref": {
+      "type": "string",
+      "description": "Minute or agenda item reference, e.g. Item 5.2"
+    },
+    "title": {
+      "type": "string",
+      "description": "Action title shown in the register table (required in the form)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional action description, shown in the view/edit pane only"
+    },
+    "raised_by": {
+      "type": "string",
+      "description": "Person who raised the action"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Person or role assigned to action"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Action due date"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority value from register config"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "In Progress",
+        "Completed",
+        "Deferred",
+        "Cancelled"
+      ],
+      "default": "Open",
+      "description": "Lifecycle status. Overdue is never stored \u2014 it is a computed display flag (past due date, not Completed/Cancelled/On Hold, and not on the Closed tab) derived by isOverdue() against the shared org clock."
+    },
+    "register_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed"
+      ],
+      "default": "active",
+      "description": "Tab placement state \u2014 controls which capsule tab (Open/Closed) the action appears under. Archiving happens at the register level (MeetingActionRegister.status), never per action, so every action always belongs to a visible tab."
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "JSON map of custom column id \u2192 value"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "register_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

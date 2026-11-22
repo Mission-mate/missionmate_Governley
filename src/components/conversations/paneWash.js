@@ -1,0 +1,2 @@
+// Faint top-edge blue wash for the conversation list and thread panes, matching the details pane tint.
+export const PANE_WASH = 'bg-[linear-gradient(to_bottom,hsl(var(--sidebar-accent)/0.7)_0px,transparent_220px)]';

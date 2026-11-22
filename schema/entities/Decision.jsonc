@@ -1,0 +1,157 @@
+{
+  "name": "Decision",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent DecisionRegister ID"
+    },
+    "decision_type": {
+      "type": "string",
+      "enum": [
+        "Decision",
+        "Resolution"
+      ],
+      "enumColors": [
+        "blue",
+        "purple"
+      ],
+      "default": "Decision",
+      "description": "Decision = agreed by consensus or noted; Resolution = a formal motion, moved and voted on"
+    },
+    "title": {
+      "type": "string",
+      "description": "Decision title shown in the register table"
+    },
+    "minuted_text": {
+      "type": "string",
+      "description": "The decision as it appears in the minutes"
+    },
+    "meeting_id": {
+      "type": "string",
+      "description": "Optional linked Meeting ID. The meeting's title and date are always read from that Meeting record, never copied onto the decision."
+    },
+    "agenda_item": {
+      "type": "string",
+      "description": "Agenda item reference, e.g. 5.1"
+    },
+    "outcome": {
+      "type": "string",
+      "description": "Agreed, Approved, Endorsed, Noted or Declined; empty when not recorded"
+    },
+    "decision_date": {
+      "type": "string",
+      "description": "Date of the decision (yyyy-mm-dd). Filled from the linked meeting's date and editable; empty when not recorded."
+    },
+    "mover": {
+      "type": "string",
+      "description": "Person who moved the motion (resolutions only)"
+    },
+    "seconder": {
+      "type": "string",
+      "description": "Person who seconded the motion (resolutions only)"
+    },
+    "votes_for": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Votes in favour (resolutions only)"
+    },
+    "votes_against": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Votes against (resolutions only)"
+    },
+    "votes_abstained": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Abstentions (resolutions only)"
+    },
+    "disposition": {
+      "type": "string",
+      "enum": [
+        "No",
+        "Supersedes",
+        "Rescinds"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ],
+      "default": "No",
+      "description": "Answer to 'Replaces an earlier decision?'. Sets the tab and status: No = Current, Supersedes = Superseded, Rescinds = Rescinded."
+    },
+    "earlier_decision_id": {
+      "type": "string",
+      "description": "Decision ID of the earlier decision this one supersedes or rescinds; empty when disposition is No"
+    }
+  },
+  "required": [
+    "register_id",
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    }
+  }
+}

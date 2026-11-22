@@ -1,0 +1,74 @@
+{
+  "name": "FinancialEntry",
+  "type": "object",
+  "properties": {
+    "parent_type": {
+      "type": "string",
+      "enum": [
+        "grant"
+      ],
+      "default": "grant",
+      "description": "Which module this entry belongs to"
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "ID of the grant"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "funding",
+        "payment"
+      ],
+      "description": "Which financial sub-table this row belongs to"
+    },
+    "label": {
+      "type": "string",
+      "description": "Year (funding) or milestone/payment name (payment)"
+    },
+    "amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Funding amount / payment amount"
+    },
+    "amount_secondary": {
+      "type": "number",
+      "default": 0,
+      "description": "Received amount (funding)"
+    },
+    "expected_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Expected date (payment rows)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "received",
+        "scheduled",
+        "overdue"
+      ],
+      "default": "scheduled",
+      "description": "Status for funding and payment rows"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Inline notes text"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "parent_type",
+    "parent_id",
+    "type"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

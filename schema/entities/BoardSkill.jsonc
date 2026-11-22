@@ -1,0 +1,33 @@
+{
+  "name": "BoardSkill",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Skill name, e.g. Finance, Governance"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the skill"
+    },
+    "is_required": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this skill is part of the required board skill set used for gap analysis"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order in the skill hub"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

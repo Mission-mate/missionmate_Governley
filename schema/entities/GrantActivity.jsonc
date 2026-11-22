@@ -1,0 +1,23 @@
+{
+  "name": "GrantActivity",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Grant activity name, e.g. Regional Development Project"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the activity"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

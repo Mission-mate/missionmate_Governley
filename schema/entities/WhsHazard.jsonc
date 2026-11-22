@@ -1,0 +1,89 @@
+{
+  "name": "WhsHazard",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (WHS Register)"
+    },
+    "hazard_code": {
+      "type": "string",
+      "description": "Human-readable ID, e.g. HZ-001"
+    },
+    "title": {
+      "type": "string",
+      "description": "Hazard title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Hazard description: details of how harm could occur"
+    },
+    "category": {
+      "type": "string",
+      "description": "From register config.hazard_categories"
+    },
+    "location": {
+      "type": "string",
+      "description": "From register config.sites or free text"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Closed"
+      ],
+      "default": "Open"
+    },
+    "person_exposed": {
+      "type": "string"
+    },
+    "likelihood": {
+      "type": "number",
+      "description": "1-5"
+    },
+    "consequence": {
+      "type": "number",
+      "description": "1-5"
+    },
+    "risk_rating": {
+      "type": "string",
+      "description": "Auto-calculated rating band (Risk Register matrix)"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Hazard owner, from register config.people"
+    },
+    "date_raised": {
+      "type": "string",
+      "format": "date"
+    },
+    "review_frequency": {
+      "type": "string"
+    },
+    "interval_value": {
+      "type": "number"
+    },
+    "interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ]
+    },
+    "last_review_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_review_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for config.hazard_custom_columns keyed by column id"
+    }
+  },
+  "required": [
+    "register_id"
+  ]
+}

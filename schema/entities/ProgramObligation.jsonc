@@ -1,0 +1,47 @@
+{
+  "name": "ProgramObligation",
+  "type": "object",
+  "properties": {
+    "program_id": {
+      "type": "string",
+      "description": "Owning Program ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "reporting_type": {
+      "type": "string",
+      "description": "e.g. Report, Acquittal, Milestone"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "complete"
+      ],
+      "default": "not_started",
+      "description": "Overdue is computed, never stored."
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "responsible_person": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "program_id",
+    "title",
+    "reporting_type",
+    "status",
+    "due_date"
+  ]
+}

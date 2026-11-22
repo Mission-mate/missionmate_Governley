@@ -1,0 +1,172 @@
+# Supabase CLI settings. Used by `supabase db push`, `supabase functions deploy` and `supabase start`.
+project_id = "governley"
+
+[api]
+# Rows per request. The app reads in pages of 1000, so keep this at 1000 or higher.
+max_rows = 1000
+
+[auth]
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173/**"]
+enable_signup = true
+
+[auth.email]
+enable_confirmations = true
+# Sign-up email shows a 6-digit code (the Register page asks for it).
+otp_length = 6
+
+# Microsoft Entra ID (Azure AD). For the hosted project, set these in the dashboard instead
+# (Authentication -> Sign In / Providers -> Azure).
+[auth.external.azure]
+enabled = false
+client_id = "env(AZURE_CLIENT_ID)"
+secret = "env(AZURE_CLIENT_SECRET)"
+url = "env(AZURE_TENANT_URL)"
+redirect_uri = ""
+
+[auth.external.google]
+enabled = false
+client_id = "env(GOOGLE_CLIENT_ID)"
+secret = "env(GOOGLE_CLIENT_SECRET)"
+redirect_uri = ""
+
+# Edge functions check the caller themselves (signed-in user, or the scheduled-job secret),
+# so the gateway JWT check is turned off. This also lets them work with the new API keys.
+
+[functions.adminUsers]
+verify_jwt = false
+
+[functions.calendarStatus]
+verify_jwt = false
+
+[functions.cleanupDeletedPlanReferences]
+verify_jwt = false
+
+[functions.cleanupUndatedMeetings]
+verify_jwt = false
+
+[functions.conversations]
+verify_jwt = false
+
+[functions.createMeetingCalendarEvent]
+verify_jwt = false
+
+[functions.createRisk]
+verify_jwt = false
+
+[functions.deleteAttendanceRecord]
+verify_jwt = false
+
+[functions.deleteCoiPerson]
+verify_jwt = false
+
+[functions.deleteComplianceCalendars]
+verify_jwt = false
+
+[functions.deleteConflict]
+verify_jwt = false
+
+[functions.deleteDocumentFolder]
+verify_jwt = false
+
+[functions.deleteMeeting]
+verify_jwt = false
+
+[functions.deleteObligations]
+verify_jwt = false
+
+[functions.deletePrograms]
+verify_jwt = false
+
+[functions.deleteProjects]
+verify_jwt = false
+
+[functions.deleteRegisterRecords]
+verify_jwt = false
+
+[functions.deleteRegisters]
+verify_jwt = false
+
+[functions.deleteStrategy]
+verify_jwt = false
+
+[functions.deleteStrategyBlocks]
+verify_jwt = false
+
+[functions.ensureMembershipDefaults]
+verify_jwt = false
+
+[functions.generateOverdueRiskReport]
+verify_jwt = false
+
+[functions.generateOverdueTreatmentReport]
+verify_jwt = false
+
+[functions.generateRiskReport]
+verify_jwt = false
+
+[functions.generateStrategyStatusReport]
+verify_jwt = false
+
+[functions.generateSubmissionPDF]
+verify_jwt = false
+
+[functions.getMembershipForm]
+verify_jwt = false
+
+[functions.invokeLLM]
+verify_jwt = false
+
+[functions.migrateTagsToIds]
+verify_jwt = false
+
+[functions.policyVersions]
+verify_jwt = false
+
+[functions.processBulkContactUpdate]
+verify_jwt = false
+
+[functions.processMembershipExpiry]
+verify_jwt = false
+
+[functions.reconcileBoardMatrixOrphans]
+verify_jwt = false
+
+[functions.reconcileMemberPlanNames]
+verify_jwt = false
+
+[functions.saveLevel6Block]
+verify_jwt = false
+
+[functions.saveProgram]
+verify_jwt = false
+
+[functions.saveRisk]
+verify_jwt = false
+
+[functions.seedSampleData]
+verify_jwt = false
+
+[functions.setupPlanner]
+verify_jwt = false
+
+[functions.storageResolveUrl]
+verify_jwt = false
+
+[functions.submitMembershipForm]
+verify_jwt = false
+
+[functions.syncGrantLookups]
+verify_jwt = false
+
+[functions.syncMemberPlanNames]
+verify_jwt = false
+
+[functions.syncParticipantIdentity]
+verify_jwt = false
+
+[functions.syncProgramTitles]
+verify_jwt = false
+
+[functions.syncTagReferences]
+verify_jwt = false

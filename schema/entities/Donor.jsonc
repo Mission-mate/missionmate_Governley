@@ -1,0 +1,79 @@
+{
+  "name": "Donor",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (Donor Register)"
+    },
+    "donor_code": {
+      "type": "string",
+      "description": "Donor ID, e.g. D-0001"
+    },
+    "donor_name": {
+      "type": "string",
+      "description": "Donor name"
+    },
+    "donor_type": {
+      "type": "string",
+      "description": "From register config.donor_types"
+    },
+    "abn": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "postal_address": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Archived"
+      ],
+      "default": "Active",
+      "description": "Donor status; empty is treated as Active. Linked donations follow it."
+    },
+    "related_party": {
+      "type": "string",
+      "enum": [
+        "Yes",
+        "No"
+      ]
+    },
+    "relationship_nature": {
+      "type": "string",
+      "description": "Nature of relationship, when related_party is Yes"
+    },
+    "due_diligence": {
+      "type": "string",
+      "enum": [
+        "Not Required",
+        "Pending",
+        "Completed",
+        "Concerned"
+      ]
+    },
+    "risk_rating": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ]
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for config.donor_custom_columns keyed by column id"
+    }
+  },
+  "required": [
+    "register_id",
+    "donor_name"
+  ]
+}

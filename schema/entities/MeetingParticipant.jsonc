@@ -1,0 +1,64 @@
+{
+  "name": "MeetingParticipant",
+  "type": "object",
+  "properties": {
+    "meeting_id": {
+      "type": "string",
+      "description": "Parent meeting ID"
+    },
+    "committee_id": {
+      "type": "string",
+      "description": "Cached committee ID of the meeting, for attendance grouping"
+    },
+    "board_person_id": {
+      "type": "string",
+      "description": "Linked BoardPerson ID"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Cached application user ID for access checks"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Cached participant display name"
+    },
+    "member_email": {
+      "type": "string",
+      "description": "Cached participant email"
+    },
+    "position": {
+      "type": "string",
+      "description": "Cached participant position/role label"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "committee",
+        "manual"
+      ],
+      "default": "committee",
+      "description": "Whether auto-populated from the committee or manually added"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "invited",
+        "present",
+        "apology",
+        "absent"
+      ],
+      "default": "invited",
+      "description": "Meeting attendance status"
+    }
+  },
+  "required": [
+    "meeting_id",
+    "board_person_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

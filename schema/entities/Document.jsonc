@@ -1,0 +1,74 @@
+{
+  "name": "Document",
+  "type": "object",
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "e.g. contact, grant, board"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "folder_id": {
+      "type": "string",
+      "description": "DocumentFolder ID"
+    },
+    "meeting_id": {
+      "type": "string",
+      "description": "Linked board Meeting ID (used for meeting docs)"
+    },
+    "board_category": {
+      "type": "string",
+      "enum": [
+        "meeting",
+        "governance"
+      ],
+      "description": "Which board hub this doc belongs to"
+    },
+    "doc_type": {
+      "type": "string",
+      "enum": [
+        "agenda",
+        "minutes",
+        "document",
+        "governance"
+      ],
+      "default": "document",
+      "description": "Board document type"
+    },
+    "title": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Private storage URI of the file; opened through a short-lived signed link"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "file_size": {
+      "type": "number"
+    },
+    "mime_type": {
+      "type": "string"
+    },
+    "created_by_name": {
+      "type": "string"
+    },
+    "order_index": {
+      "type": "number",
+      "description": "Position in the meeting's document list, set when a document is moved. Documents without one (newly added) are listed first, newest first."
+    }
+  },
+  "required": [
+    "object_type",
+    "object_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

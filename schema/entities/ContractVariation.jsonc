@@ -1,0 +1,63 @@
+{
+  "name": "ContractVariation",
+  "type": "object",
+  "properties": {
+    "contract_id": {
+      "type": "string",
+      "description": "Parent Contract ID"
+    },
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string",
+      "description": "What changes"
+    },
+    "change_in_value": {
+      "type": "number",
+      "description": "Signed change; negative for a reduction"
+    },
+    "variation_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "new_expiry_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Current",
+        "Superseded"
+      ],
+      "default": "Current",
+      "description": "Only one variation per contract is Current"
+    },
+    "applied_to_contract": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether value/expiry changes were applied to the contract"
+    },
+    "applied_value": {
+      "type": "number",
+      "description": "Value change actually applied to the contract"
+    },
+    "previous_expiry_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Contract expiry before this variation's expiry was applied"
+    }
+  },
+  "required": [
+    "contract_id",
+    "title"
+  ]
+}

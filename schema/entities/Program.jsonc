@@ -1,0 +1,124 @@
+{
+  "name": "Program",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Program title"
+    },
+    "description": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string",
+      "description": "Program card folder icon colour key",
+      "default": "blue"
+    },
+    "financial_year": {
+      "type": "string",
+      "description": "e.g. FY25/26"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "program_lead": {
+      "type": "string"
+    },
+    "program_lead_id": {
+      "type": "string"
+    },
+    "executive_sponsor": {
+      "type": "string",
+      "description": "Senior executive overseeing the program"
+    },
+    "project_officers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Selectable statuses are active/completed; archived is set only via the Archive action"
+    },
+    "title_sync_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "synced",
+        "failed"
+      ],
+      "enumColors": [
+        "yellow",
+        "green",
+        "red"
+      ],
+      "description": "State of copying this program's title onto its linked projects. Set to pending by saveProgram on a rename; set to synced/failed by the syncProgramTitles background function. Empty means nothing to sync."
+    },
+    "title_sync_error": {
+      "type": "string",
+      "description": "Last background title-sync error, cleared on success"
+    },
+    "title_sync_attempts": {
+      "type": "number",
+      "default": 0,
+      "description": "Consecutive failed background title-sync runs, reset on success"
+    },
+    "title_synced_at": {
+      "type": "string",
+      "description": "ISO timestamp when linked project titles were last confirmed in sync"
+    },
+    "deliverable_config": {
+      "type": "object",
+      "description": "Deliverables Customiser config for this program",
+      "properties": {
+        "show_priority": {
+          "type": "boolean",
+          "default": true
+        },
+        "custom_columns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "description": "Text/Number, Date, Single Select or Long Text"
+              },
+              "config": {
+                "type": "object",
+                "description": "Type-specific config, e.g. select options"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

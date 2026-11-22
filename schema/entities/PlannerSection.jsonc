@@ -1,0 +1,21 @@
+{
+  "name": "PlannerSection",
+  "type": "object",
+  "properties": {
+    "planner_id": {
+      "type": "string",
+      "description": "Owning ProgramPlanner / ProjectPlanner ID"
+    },
+    "title": {
+      "type": "string"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "planner_id",
+    "title"
+  ]
+}

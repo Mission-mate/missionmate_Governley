@@ -1,0 +1,87 @@
+{
+  "name": "Meeting",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Meeting title"
+    },
+    "committee_id": {
+      "type": "string",
+      "description": "Linked committee ID"
+    },
+    "committee_name": {
+      "type": "string",
+      "description": "Cached committee name"
+    },
+    "meeting_type": {
+      "type": "string",
+      "enum": [
+        "online",
+        "in_person",
+        "hybrid"
+      ],
+      "default": "in_person",
+      "description": "Meeting delivery type"
+    },
+    "meeting_link": {
+      "type": "string",
+      "description": "Online meeting URL (for online/hybrid meetings)"
+    },
+    "video_link": {
+      "type": "string",
+      "description": "Video conferencing join link added from the meeting profile"
+    },
+    "meeting_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the meeting"
+    },
+    "calendar_year": {
+      "type": "number",
+      "description": "Calendar year of the meeting date, for grouping"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone key, e.g. sydney"
+    },
+    "start_time": {
+      "type": "string",
+      "description": "Start time in HH:mm 24h format"
+    },
+    "end_time": {
+      "type": "string",
+      "description": "End time in HH:mm 24h format"
+    },
+    "location": {
+      "type": "string",
+      "description": "Location name, e.g. room/level"
+    },
+    "address": {
+      "type": "string",
+      "description": "Full address"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "cancelled"
+      ],
+      "default": "scheduled"
+    }
+  },
+  "required": [
+    "title",
+    "committee_id",
+    "meeting_type",
+    "meeting_date",
+    "start_time",
+    "end_time"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

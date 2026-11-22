@@ -1,0 +1,29 @@
+{
+  "name": "PlannerRow",
+  "type": "object",
+  "properties": {
+    "planner_id": {
+      "type": "string",
+      "description": "Owning planner ID"
+    },
+    "section_id": {
+      "type": "string",
+      "description": "PlannerSection this task belongs to"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "planner_id",
+    "section_id",
+    "title"
+  ]
+}

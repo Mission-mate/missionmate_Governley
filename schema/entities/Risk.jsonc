@@ -1,0 +1,306 @@
+{
+  "name": "Risk",
+  "type": "object",
+  "properties": {
+    "risk_id": {
+      "type": "string",
+      "description": "Human-readable risk ID, e.g. RISK-001 \u2014 assigned and kept unique (case-insensitive) by the createRisk / saveRisk functions"
+    },
+    "date_raised": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the risk was first raised"
+    },
+    "raised_by": {
+      "type": "string",
+      "description": "Name of the person who raised the risk"
+    },
+    "title": {
+      "type": "string",
+      "description": "Risk title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the risk"
+    },
+    "category": {
+      "type": "string",
+      "description": "Risk category"
+    },
+    "risk_appetite": {
+      "type": "string",
+      "enum": [
+        "Within Appetite",
+        "Outside Appetite"
+      ],
+      "description": "Whether the risk is within or outside the organisation's risk appetite"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Assigned risk owner"
+    },
+    "cause": {
+      "type": "string",
+      "description": "Potential causes of the event occurring"
+    },
+    "impact": {
+      "type": "string",
+      "description": "Main impact of the risk event"
+    },
+    "inherent_likelihood": {
+      "type": "number",
+      "description": "Inherent (pre-mitigation) likelihood score 1-5"
+    },
+    "inherent_consequence": {
+      "type": "number",
+      "description": "Inherent (pre-mitigation) consequence score 1-5"
+    },
+    "inherent_rating": {
+      "type": "string",
+      "description": "Inherent (pre-mitigation) risk rating band \u2014 auto-calculated"
+    },
+    "existing_controls": {
+      "type": "array",
+      "description": "Existing controls already in place to prevent, detect, or respond to the risk",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "control": {
+            "type": "string",
+            "description": "Control title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Control description"
+          },
+          "design_effectiveness": {
+            "type": "string",
+            "description": "Design effectiveness rating: Effective, Partially Effective, or Ineffective"
+          },
+          "operating_effectiveness": {
+            "type": "string",
+            "description": "Operating effectiveness rating: Effective, Partially Effective, or Ineffective"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Rich-text control notes"
+          }
+        }
+      }
+    },
+    "residual_likelihood": {
+      "type": "number",
+      "description": "Residual (post-mitigation) likelihood score 1-5"
+    },
+    "residual_consequence": {
+      "type": "number",
+      "description": "Residual (post-mitigation) consequence score 1-5"
+    },
+    "residual_rating": {
+      "type": "string",
+      "description": "Residual (post-mitigation) risk rating band \u2014 auto-calculated"
+    },
+    "treatment_action": {
+      "type": "string",
+      "description": "Risk treatment strategy: Avoid (Terminate), Reduce (Mitigate), Transfer (Share), or Accept (Tolerate)"
+    },
+    "treatment_plan": {
+      "type": "array",
+      "description": "List of treatment action plan items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "strategy": {
+            "type": "string",
+            "description": "Treatment strategy for this action"
+          },
+          "title": {
+            "type": "string",
+            "description": "Treatment action title (required in the UI)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Action description"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Action owner"
+          },
+          "resolve_by": {
+            "type": "string",
+            "description": "On Going or Due Date"
+          },
+          "due_date": {
+            "type": "string",
+            "description": "Due date when resolve_by is Due Date"
+          },
+          "priority": {
+            "type": "string",
+            "description": "High, Medium, or Low"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Not Started",
+              "In Progress",
+              "On Hold",
+              "Completed"
+            ],
+            "description": "Treatment action status \u2014 validated by the saveRisk function"
+          },
+          "progress": {
+            "type": "number",
+            "description": "Progress percentage 0-100"
+          },
+          "progress_notes": {
+            "type": "string",
+            "description": "Legacy rich-text progress notes \u2014 superseded by Note records (object_type risk_treatment_action)"
+          },
+          "completion_date": {
+            "type": "string",
+            "description": "Date the action was completed"
+          }
+        }
+      }
+    },
+    "monitoring_method": {
+      "type": "string",
+      "description": "How the risk treatment is monitored (e.g. KPI tracking, audit, periodic review)"
+    },
+    "progress_notes": {
+      "type": "string",
+      "description": "Progress and compliance reporting notes / status updates"
+    },
+    "review_frequency": {
+      "type": "string",
+      "description": "How often the risk is reviewed (Monthly, Quarterly, Biannually, Annually, Ad Hoc)"
+    },
+    "last_reviewed_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the risk was last reviewed"
+    },
+    "next_review_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the risk is next due for review"
+    },
+    "review_log": {
+      "type": "array",
+      "description": "History of review entries",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique review entry ID"
+          },
+          "title": {
+            "type": "string",
+            "description": "Review title, e.g. Quarter 1, 2028 Risk Review"
+          },
+          "date": {
+            "type": "string",
+            "description": "Date of the review"
+          },
+          "reviewer": {
+            "type": "string",
+            "description": "Name of the person who carried out the review"
+          },
+          "outcome": {
+            "type": "string",
+            "description": "Review outcome: Risk Increased, Risk Decreased, No Change, Closed, or Escalated"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Rich-text review notes captured at the time of review"
+          }
+        }
+      }
+    },
+    "rating_history": {
+      "type": "array",
+      "description": "Audit log of status changes and risk rating adjustments over time \u2014 appended by the saveRisk function when status or ratings change",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique history entry ID"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "ISO timestamp when the change was recorded"
+          },
+          "changed_by": {
+            "type": "string",
+            "description": "Display name of the user who made the change"
+          },
+          "changes": {
+            "type": "array",
+            "description": "List of individual field changes captured in this entry",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "description": "What changed: Status, Inherent Rating, or Residual Rating"
+                },
+                "from": {
+                  "type": "string",
+                  "description": "Previous value"
+                },
+                "to": {
+                  "type": "string",
+                  "description": "New value"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "default": "Active",
+      "description": "Risk lifecycle status (Active, Closed, or custom)"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "JSON map of custom field id \u2192 value for configured fields"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    },
+    "version": {
+      "type": "number",
+      "default": 0,
+      "description": "Concurrency version marker \u2014 incremented by the saveRisk function on every update and used to reject stale writes. Never set by the client."
+    }
+  },
+  "required": [
+    "title",
+    "owner"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "delete": null
+  }
+}

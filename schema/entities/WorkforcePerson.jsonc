@@ -1,0 +1,54 @@
+{
+  "name": "WorkforcePerson",
+  "type": "object",
+  "properties": {
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID (Workforce Licenses and Credentials Register)"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "person_type": {
+      "type": "string",
+      "enum": [
+        "Employee",
+        "Volunteer",
+        "Contractor",
+        "Board Member",
+        "Other"
+      ]
+    },
+    "role": {
+      "type": "string",
+      "description": "Position or role, e.g. Youth worker"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "program_area": {
+      "type": "string",
+      "description": "Program or area, e.g. Settlement casework"
+    },
+    "manager": {
+      "type": "string",
+      "description": "Manager or supervisor name"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Archived"
+      ],
+      "default": "Active",
+      "description": "Profile status; empty is treated as Active"
+    }
+  },
+  "required": [
+    "register_id",
+    "full_name"
+  ]
+}

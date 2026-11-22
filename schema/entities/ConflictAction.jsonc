@@ -1,0 +1,36 @@
+{
+  "name": "ConflictAction",
+  "type": "object",
+  "properties": {
+    "conflict_id": {
+      "type": "string",
+      "description": "Parent ConflictOfInterest record ID"
+    },
+    "title": {
+      "type": "string",
+      "description": "Action title"
+    },
+    "content": {
+      "type": "string",
+      "description": "Rich-text description of how the conflict will be resolved or managed and steps taken by the board"
+    },
+    "linked_document": {
+      "type": "string",
+      "description": "Optional linked document title"
+    },
+    "created_by_name": {
+      "type": "string",
+      "description": "Cached display name of the action author"
+    }
+  },
+  "required": [
+    "conflict_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

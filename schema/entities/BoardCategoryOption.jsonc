@@ -1,0 +1,28 @@
+{
+  "name": "BoardCategoryOption",
+  "type": "object",
+  "properties": {
+    "category_id": {
+      "type": "string",
+      "description": "Parent BoardCategory ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Option label, e.g. Metro, First Nations"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "category_id",
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

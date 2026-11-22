@@ -1,0 +1,87 @@
+{
+  "name": "WorkItem",
+  "type": "object",
+  "properties": {
+    "work_plan_id": {
+      "type": "string",
+      "description": "Parent WorkPlan ID"
+    },
+    "item_id": {
+      "type": "string",
+      "description": "Human-readable work item ID, e.g. ITEM-001"
+    },
+    "template_origin_id": {
+      "type": "string",
+      "description": "Stable identity of the work plan library item this work item was applied from. Used to prevent adding the same library item to the same work plan twice."
+    },
+    "title": {
+      "type": "string",
+      "description": "Work item title / name (required)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the work item"
+    },
+    "category": {
+      "type": "string",
+      "description": "Work plan category value from work plan config"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person or role responsible for the work item"
+    },
+    "frequency": {
+      "type": "string",
+      "description": "How often this work item recurs (Monthly, Quarterly, Annually, Ad Hoc, One-off)"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The latest date this item should be completed by"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority value from work plan config"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "On Hold",
+        "Cancelled"
+      ],
+      "default": "Not Started",
+      "description": "Work item status"
+    },
+    "register_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Tab placement state for the work item"
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "JSON map of custom column id \u2192 value"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "work_plan_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

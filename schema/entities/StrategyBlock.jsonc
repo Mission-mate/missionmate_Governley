@@ -1,0 +1,342 @@
+{
+  "name": "StrategyBlock",
+  "type": "object",
+  "properties": {
+    "strategy_id": {
+      "type": "string",
+      "description": "Parent Strategy ID this block belongs to"
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "ID of the parent StrategyBlock one level above (empty for top-level blocks)"
+    },
+    "level2_id": {
+      "type": "string",
+      "description": "Linked StrategyLevel2 pillar ID (used by Priorities items to assign a Focus Area label)"
+    },
+    "level": {
+      "type": "number",
+      "description": "Numeric storage slot of the hierarchy layer this block belongs to (matches a layer's level in the parent Strategy's strategy_layers). An identifier only: it does not imply hierarchy order, and the user-facing name always comes from the layer."
+    },
+    "custom_id": {
+      "type": "string",
+      "description": "Human-readable, user-editable record ID unique within the strategy, e.g. MEA-001"
+    },
+    "title": {
+      "type": "string",
+      "description": "Block title / name"
+    },
+    "content": {
+      "type": "string",
+      "description": "Description / details for this block"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Legacy single owner. Kept in sync with the first entry of owners for backward compatibility."
+    },
+    "owners": {
+      "type": "array",
+      "description": "People or teams responsible for this item. Supports multiple owners.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "executive_sponsor": {
+      "type": "string",
+      "description": "Executive sponsor for this item (Priorities layer)"
+    },
+    "target_year": {
+      "type": "string",
+      "description": "Target year for this item (Priorities layer), e.g. 2026"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date for this item"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "End date for this item"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date for this item"
+    },
+    "progress": {
+      "type": "number",
+      "description": "Progress percentage 0-100. Auto-calculated from completed tasks."
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority of the item: High, Medium, or Low. Empty until the user selects one."
+    },
+    "custom_fields": {
+      "type": "object",
+      "description": "Values for this layer's custom columns configured in the Strategy Customiser, keyed by custom column id"
+    },
+    "tracking_config": {
+      "type": "object",
+      "description": "Per-record tracking and monitoring configuration (Projects and Measures layers)",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether Track Progress is enabled for this deliverable"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "completion",
+            "count",
+            "both"
+          ],
+          "description": "How progress is tracked: task completion, numeric count, or both"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "#",
+            "%",
+            "$"
+          ],
+          "description": "Unit used to present count values"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "Higher is Better",
+            "Lower is Better"
+          ],
+          "description": "Whether a higher or lower reported value is the desired outcome"
+        }
+      }
+    },
+    "reporting_frequency": {
+      "type": "string",
+      "description": "Reporting frequency for count tracking: Monthly, Quarterly, Biannually, Annually, Every or Ad Hoc."
+    },
+    "reporting_interval_value": {
+      "type": "number",
+      "description": "Custom reporting interval value, used only when reporting_frequency is 'Every'"
+    },
+    "reporting_interval_unit": {
+      "type": "string",
+      "enum": [
+        "Months",
+        "Years"
+      ],
+      "description": "Custom reporting interval unit, used only when reporting_frequency is 'Every'"
+    },
+    "reporting_period_start": {
+      "type": "string",
+      "format": "date",
+      "description": "Reporting start date for count tracking. Reporting periods always follow the Financial Year (1 July - 30 June)."
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this measure was last updated"
+    },
+    "location_reporting_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether location based reporting is enabled for this measure's reporting table"
+    },
+    "reporting_breakdown": {
+      "type": "string",
+      "description": "Reporting layout when location reporting is enabled: 'period' or 'location'"
+    },
+    "reporting_locations": {
+      "type": "array",
+      "description": "Managed locations available in this block's reporting table",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "report_columns": {
+      "type": "object",
+      "description": "Per-row reporting table column configuration",
+      "properties": {
+        "optional_visible": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Keys of optional columns currently shown in the reporting table"
+        },
+        "optional_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Display order of the optional column keys"
+        },
+        "optional_labels": {
+          "type": "object",
+          "description": "Renamed labels for optional columns keyed by column key"
+        },
+        "system_labels": {
+          "type": "object",
+          "description": "Renamed labels for system columns keyed by column key"
+        },
+        "system_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Display order of reorderable system column keys"
+        },
+        "system_hidden": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Keys of hideable system columns (e.g. baseline) currently hidden from the reporting table"
+        },
+        "custom": {
+          "type": "array",
+          "description": "Custom columns added to this block's reporting table",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "description": "Column type from the register column library"
+              },
+              "config": {
+                "type": "object",
+                "description": "Type-specific config (options, style...)"
+              },
+              "visible": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "task_columns": {
+      "type": "object",
+      "description": "Per-record task table column configuration",
+      "properties": {
+        "optional_visible": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Keys of built-in optional columns currently shown in the task table"
+        },
+        "optional_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Display order of the built-in optional column keys"
+        },
+        "optional_labels": {
+          "type": "object",
+          "description": "Renamed labels for built-in optional columns keyed by column key"
+        },
+        "optional_options": {
+          "type": "object",
+          "description": "Edited option lists for built-in select columns keyed by column key"
+        },
+        "system_hidden": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Keys of hideable system columns (e.g. priority) currently hidden from the task table"
+        },
+        "custom": {
+          "type": "array",
+          "description": "Custom columns added to this block's task table",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "description": "Column type from the register column library"
+              },
+              "config": {
+                "type": "object",
+                "description": "Type-specific config (options, style...)"
+              },
+              "visible": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Success outcomes for this item (Priorities layer)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "contributes_to": {
+      "type": "string",
+      "default": "",
+      "description": "ID of the single other StrategyBlock this item contributes to (Connections). Empty when not linked."
+    },
+    "health": {
+      "type": "string",
+      "description": "Health status of the item: On Track, Monitor, or Off Track. Empty until the user selects one."
+    },
+    "status": {
+      "type": "string",
+      "description": "Delivery status of this item: Not Started, In Progress, Completed, On Hold, or Cancelled."
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order within its parent"
+    }
+  },
+  "required": [
+    "strategy_id",
+    "level",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

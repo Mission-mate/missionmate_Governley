@@ -1,0 +1,130 @@
+{
+  "name": "Conversation",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "direct",
+        "group"
+      ],
+      "enumColors": [
+        "blue",
+        "purple"
+      ],
+      "description": "direct = two team members, group = a named group chat"
+    },
+    "name": {
+      "type": "string",
+      "description": "Group name (group conversations only)"
+    },
+    "color": {
+      "type": "string",
+      "enum": [
+        "orange",
+        "yellow",
+        "green",
+        "teal",
+        "lavender"
+      ],
+      "enumColors": [
+        "red",
+        "yellow",
+        "green",
+        "blue",
+        "purple"
+      ],
+      "description": "Group tile colour key from the folder palette (group conversations only)"
+    },
+    "member_ids": {
+      "type": "array",
+      "description": "User IDs of the participants. Only these users can read the conversation.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "admin_ids": {
+      "type": "array",
+      "description": "User IDs of the group's admins (group conversations only). Only admins can rename, recolour, add or remove members, assign admins, or delete the group. A group always keeps at least one admin; set by the conversations function.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hidden_by": {
+      "type": "array",
+      "description": "User IDs of members who deleted this direct conversation from their own list. Cleared when a new message or poll is posted; once every member has hidden it, the conversation is removed. Set by the conversations function.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "direct_key": {
+      "type": "string",
+      "description": "Sorted pair of user IDs for a direct conversation, so each pair shares one conversation"
+    },
+    "last_message_text": {
+      "type": "string",
+      "description": "Short preview of the latest message"
+    },
+    "last_message_sender_id": {
+      "type": "string",
+      "description": "User ID of the latest message's sender"
+    },
+    "last_message_at": {
+      "type": "string",
+      "description": "ISO timestamp of the latest activity; conversations are listed by it"
+    },
+    "poll_activity_at": {
+      "type": "string",
+      "description": "ISO timestamp of the latest poll vote or closure; tells members' open threads to refresh"
+    },
+    "pin_activity_at": {
+      "type": "string",
+      "description": "ISO timestamp of the latest pin or unpin; tells members' open threads to refresh their pinned bar"
+    },
+    "file_activity_at": {
+      "type": "string",
+      "description": "ISO timestamp of the latest shared-file deletion; tells members' open threads to drop that file"
+    },
+    "file_removed_message_id": {
+      "type": "string",
+      "description": "ConversationMessage ID whose file was deleted most recently; set together with file_activity_at by the conversations function"
+    },
+    "read_activity_at": {
+      "type": "string",
+      "description": "ISO timestamp of the latest time a member caught up on the conversation; tells members' lists to refresh unread counts and Read receipts"
+    }
+  },
+  "required": [
+    "type",
+    "member_ids"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.member_ids": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "server_only"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "ProjectDeliverableSubtask",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "Owning ProjectDeliverableTask ID"
+    },
+    "deliverable_id": {
+      "type": "string",
+      "description": "Parent ProjectDeliverable ID (denormalised for cascades)"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed"
+      ],
+      "default": "Not Started"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string",
+      "description": "Rich-text (HTML) description"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "task_id",
+    "title"
+  ]
+}

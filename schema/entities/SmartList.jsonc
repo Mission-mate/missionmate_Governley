@@ -1,0 +1,28 @@
+{
+  "name": "SmartList",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the saved smart list"
+    },
+    "object_type": {
+      "type": "string",
+      "description": "Which module the smart list applies to, e.g. contacts",
+      "default": "contacts"
+    },
+    "filters": {
+      "type": "object",
+      "description": "Saved filter selections, e.g. { contactTypes: [], tags: [] }"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

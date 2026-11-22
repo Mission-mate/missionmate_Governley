@@ -1,0 +1,55 @@
+{
+  "name": "Idea",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Short idea title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the idea"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Feature",
+        "Improvement",
+        "Integration",
+        "Other"
+      ],
+      "default": "Feature",
+      "description": "Idea category"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "submitted",
+        "under_review",
+        "planned",
+        "completed",
+        "declined"
+      ],
+      "default": "submitted",
+      "description": "Idea lifecycle status"
+    },
+    "votes": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of upvotes"
+    },
+    "submitter_name": {
+      "type": "string",
+      "description": "Cached display name of the person who submitted the idea"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

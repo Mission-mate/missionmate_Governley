@@ -1,0 +1,64 @@
+{
+  "name": "MembershipApplicationResponse",
+  "type": "object",
+  "properties": {
+    "membership_structure_id": {
+      "type": "string",
+      "description": "MembershipStructure (plan) this application was submitted against"
+    },
+    "membership_structure_name": {
+      "type": "string",
+      "description": "Cached plan name for display"
+    },
+    "member_id": {
+      "type": "string",
+      "description": "Linked Member record created from this application (if any)"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Cached applicant display name"
+    },
+    "answers": {
+      "type": "array",
+      "description": "Full form submission history \u2014 every question and its answer, whether or not it maps to a member field",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "description": "The application field id this answer belongs to"
+          },
+          "label": {
+            "type": "string",
+            "description": "Cached question label at time of submission"
+          },
+          "type": {
+            "type": "string",
+            "description": "Cached question type at time of submission"
+          },
+          "value": {
+            "description": "Submitted answer value (string, number, array, or file url)"
+          },
+          "mapped_to": {
+            "type": "string",
+            "description": "Member field key/id this answer was mapped to, if any"
+          }
+        }
+      }
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Submission timestamp"
+    }
+  },
+  "required": [
+    "membership_structure_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

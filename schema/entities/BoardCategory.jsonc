@@ -1,0 +1,46 @@
+{
+  "name": "BoardCategory",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Category name, e.g. Skills, Gender, Location"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "skills",
+        "attribute"
+      ],
+      "default": "attribute",
+      "description": "skills = the locked system category whose options are BoardSkill records; attribute = options live in BoardCategoryOption"
+    },
+    "cardinality": {
+      "type": "string",
+      "enum": [
+        "single",
+        "multi"
+      ],
+      "default": "multi",
+      "description": "single = one option per member; multi = many options per member"
+    },
+    "is_locked": {
+      "type": "boolean",
+      "default": false,
+      "description": "Locked system categories cannot be renamed or deleted"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "MemberAttribute",
+  "type": "object",
+  "properties": {
+    "person_id": {
+      "type": "string",
+      "description": "Parent BoardPerson record ID"
+    },
+    "category_id": {
+      "type": "string",
+      "description": "Linked BoardCategory ID"
+    },
+    "category_name": {
+      "type": "string",
+      "description": "Cached category name for display"
+    },
+    "option_id": {
+      "type": "string",
+      "description": "Linked BoardCategoryOption ID"
+    },
+    "option_name": {
+      "type": "string",
+      "description": "Cached option name for display"
+    }
+  },
+  "required": [
+    "person_id",
+    "category_id",
+    "option_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "ContractObligation",
+  "type": "object",
+  "properties": {
+    "contract_id": {
+      "type": "string",
+      "description": "Parent Contract ID"
+    },
+    "register_id": {
+      "type": "string",
+      "description": "Parent ComplianceManagedRegister ID"
+    },
+    "title": {
+      "type": "string",
+      "description": "Obligation title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional obligation description"
+    },
+    "reporting_type": {
+      "type": "string",
+      "description": "e.g. Report, Acquittal, Deliverable"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "complete"
+      ],
+      "default": "not_started",
+      "description": "Lifecycle status. Overdue is computed, never stored."
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "responsible_person": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "contract_id",
+    "title"
+  ]
+}

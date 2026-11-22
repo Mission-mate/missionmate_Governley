@@ -1,0 +1,56 @@
+{
+  "name": "WorkPlanTemplateItem",
+  "type": "object",
+  "properties": {
+    "folder_id": {
+      "type": "string",
+      "description": "Parent WorkPlanTemplateFolder ID"
+    },
+    "template_origin_id": {
+      "type": "string",
+      "description": "Stable identity linking this library item back to its source work item"
+    },
+    "title": {
+      "type": "string",
+      "description": "Work item title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Work item description"
+    },
+    "category": {
+      "type": "string",
+      "description": "Work plan category value"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person or role responsible"
+    },
+    "frequency": {
+      "type": "string",
+      "description": "How often this work item recurs"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority value"
+    },
+    "target_month": {
+      "type": "string",
+      "description": "Target month name (e.g. July) \u2014 period-agnostic, applied as-is to any work plan"
+    },
+    "order_index": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "folder_id",
+    "title"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

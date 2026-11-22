@@ -1,0 +1,64 @@
+{
+  "name": "SupportTicket",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "Ticket subject line"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Technical Issue",
+        "Billing",
+        "Feature Request",
+        "Account",
+        "Other"
+      ],
+      "default": "Other",
+      "description": "Ticket category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the issue"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "default": "Medium",
+      "description": "Ticket priority"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "in_progress",
+        "resolved",
+        "closed"
+      ],
+      "default": "open",
+      "description": "Ticket lifecycle status"
+    },
+    "submitter_name": {
+      "type": "string",
+      "description": "Cached display name of the person who raised the ticket"
+    },
+    "submitter_email": {
+      "type": "string",
+      "description": "Cached email of the submitter"
+    }
+  },
+  "required": [
+    "subject"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

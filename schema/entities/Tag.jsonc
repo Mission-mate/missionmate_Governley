@@ -1,0 +1,27 @@
+{
+  "name": "Tag",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Tag name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional tag description"
+    },
+    "color": {
+      "type": "string",
+      "description": "Tag color key"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

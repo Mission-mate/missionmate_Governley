@@ -1,0 +1,36 @@
+{
+  "name": "CommitteeMember",
+  "type": "object",
+  "properties": {
+    "committee_id": {
+      "type": "string",
+      "description": "Parent committee ID"
+    },
+    "board_person_id": {
+      "type": "string",
+      "description": "Linked BoardPerson (committee member register) record ID"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Linked application user ID"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Cached member display name"
+    },
+    "member_email": {
+      "type": "string",
+      "description": "Cached member email for reminders"
+    }
+  },
+  "required": [
+    "committee_id",
+    "user_id"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}
