@@ -6,6 +6,8 @@
  *   node scripts/port-base44-functions.mjs <path-to-base44-export>/base44
  *
  * For each function it:
+ *   - names each folder in lowercase with hyphens (deleteMeeting -> delete-meeting), because Supabase
+ *     lowercases function names; the app converts names with _shared/b44/functionSlug.js
  *   - renames entry.ts -> index.ts (Supabase convention)
  *   - swaps `import { createClientFromRequest } from 'npm:@base44/sdk@…'` for ../_shared/base44.ts
  *   - points ../../shared/ imports at ../_shared/
@@ -64,16 +66,18 @@ for (const f of fs.readdirSync(path.join(SRC, 'shared'))) {
   fs.writeFileSync(path.join(OUT, '_shared', f), convertShared(code));
 }
 
+const slug = (n) => n.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 const ported = [];
 for (const name of fs.readdirSync(path.join(SRC, 'functions')).sort()) {
   const dir = path.join(SRC, 'functions', name);
   if (!fs.statSync(dir).isDirectory()) continue;
-  fs.mkdirSync(path.join(OUT, name), { recursive: true });
+  const target = path.join(OUT, slug(name));
+  fs.mkdirSync(target, { recursive: true });
   for (const f of fs.readdirSync(dir)) {
     const code = fs.readFileSync(path.join(dir, f), 'utf8');
-    if (f === 'entry.ts') fs.writeFileSync(path.join(OUT, name, 'index.ts'), convertEntry(name, code));
-    else fs.writeFileSync(path.join(OUT, name, f), convertSibling(code));
+    if (f === 'entry.ts') fs.writeFileSync(path.join(target, 'index.ts'), convertEntry(name, code));
+    else fs.writeFileSync(path.join(target, f), convertSibling(code));
   }
-  ported.push(name);
+  ported.push(slug(name));
 }
 console.log(`Ported ${ported.length} functions:`, ported.join(', '));

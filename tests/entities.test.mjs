@@ -3,6 +3,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { queryToLogicTree, normalizeRecord } from '../supabase/functions/_shared/b44/entities.js';
 import { SCHEMA } from '../supabase/functions/_shared/b44/schema.generated.js';
+import { functionSlug } from '../supabase/functions/_shared/b44/functionSlug.js';
+import fs from 'node:fs';
 
 const conv = SCHEMA.Conversation;
 const risk = SCHEMA.Risk;
@@ -67,4 +69,18 @@ test('unsupported operators fail loudly', () => {
 
 test('normalizeRecord drops empty fields and merges _extra', () => {
   assert.deepEqual(normalizeRecord({ id: '1', a: null, b: 2, _extra: { c: 3, d: null } }), { id: '1', b: 2, c: 3 });
+});
+
+test('function names map to the deployed folder names', () => {
+  assert.equal(functionSlug('deleteMeeting'), 'delete-meeting');
+  assert.equal(functionSlug('generateSubmissionPDF'), 'generate-submission-pdf');
+  assert.equal(functionSlug('invokeLLM'), 'invoke-llm');
+  assert.equal(functionSlug('saveLevel6Block'), 'save-level6-block');
+  assert.equal(functionSlug('conversations'), 'conversations');
+  const folders = fs.readdirSync(new URL('../supabase/functions', import.meta.url)).filter((d) => !d.startsWith('_') && !d.startsWith('.'));
+  const config = fs.readFileSync(new URL('../supabase/config.toml', import.meta.url), 'utf8');
+  for (const f of folders) {
+    assert.equal(f, f.toLowerCase(), `${f} must be lowercase`);
+    assert.ok(config.includes(`[functions.${f}]`), `${f} missing from config.toml`);
+  }
 });

@@ -4,13 +4,14 @@
  * Every screen imports `base44` from here exactly as before:
  *   base44.entities.<Name>.*          -> Postgres tables (supabase/functions/_shared/b44/entities.js)
  *   base44.auth.*                     -> Supabase Auth (email + password, Google, Microsoft Entra ID)
- *   base44.functions.invoke(name, …)  -> Supabase Edge Functions (supabase/functions/<name>)
+ *   base44.functions.invoke(name, …)  -> Supabase Edge Functions (supabase/functions/<name-with-hyphens>)
  *   base44.integrations.Core.*        -> Supabase Storage + the invokeLLM edge function
  *   base44.users.inviteUser(…)        -> adminUsers edge function
  */
 import { supabase, SUPABASE_URL, SUPABASE_ANON_KEY } from './supabaseClient';
 import { createEntities, Base44Error, fromPgError, normalizeRecord } from '@b44/entities.js';
 import { SCHEMA } from '@b44/schema.generated.js';
+import { functionSlug } from '@b44/functionSlug.js';
 
 export { supabase };
 
@@ -54,7 +55,8 @@ async function invoke(name, payload = {}) {
 
   let res;
   try {
-    res = await fetch(`${SUPABASE_URL}/functions/v1/${name}`, { method: 'POST', headers, body });
+    // invoke('deleteMeeting') -> /functions/v1/delete-meeting
+    res = await fetch(`${SUPABASE_URL}/functions/v1/${functionSlug(name)}`, { method: 'POST', headers, body });
   } catch (networkError) {
     const err = new Error(`Network error calling ${name}: ${networkError.message}`);
     err.response = undefined;
